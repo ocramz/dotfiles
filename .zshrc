@@ -45,7 +45,7 @@ alias e=$EDITOR
 function ec() { e -s $@ }
 function es() { emacs --daemon=$1 && ec $1 }
 function ek() { ec $1 -e '(server-stop)' }
-function el() { ps aux | egrep [Ee]macs | egrep -v grep }
+function el() { ps aux | egrep "[Ee]macs" | egrep -v grep }
 
 # git
 
