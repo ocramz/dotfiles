@@ -169,10 +169,14 @@
 
 ;; erlang
 
+(defun my-erlang-mode-hook ()
+  (require 'erlang-flymake)
+  (erlang-flymake-only-on-save))
+
 (defun after-erlang ()
   (add-to-list 'load-path "~/.emacs.d/el-get/erlang/lib/tools/emacs")
   (require 'erlang-start)
-  (require 'erlang-flymake))
+  (add-hook 'erlang-mode-hook 'my-erlang-mode-hook))
 
 (defun after-lfe ()
   (add-to-list 'load-path "~/.emacs.d/el-get/lfe/emacs")
