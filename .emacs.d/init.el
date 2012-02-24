@@ -125,6 +125,17 @@
 
 (add-hook-to-modes code-modes 'my-code-mode-hook)
 
+;; pretty lambdas
+
+(defun my-lisp-mode-hook ()
+  (font-lock-add-keywords
+   nil `(("(\\(lambda\\>\\)"
+          (0 (progn (compose-region (match-beginning 1) (match-end 1)
+                                    ,(make-char 'greek-iso8859-7 107))
+                    nil))))))
+
+(add-hook-to-modes lisp-modes 'my-lisp-mode-hook)
+
 ;; yasnippet
 
 (defun after-yasnippet ()
