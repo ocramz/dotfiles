@@ -28,7 +28,7 @@ each() {
 alias tmux="nocorrect tmux"
 alias t="tmux attach || tmux"
 
-function ts() { tmux -L $@ }
+function ts() { tmux -S /tmp/$@ }
 function ta() { ts $1 attach }
 function tk() { ts $1 kill-session }
 function tl() { ps aux | grep tmux | egrep -v grep }
