@@ -95,7 +95,8 @@
 
 (setq lisp-modes '(clojure
                    emacs-lisp
-                   lfe)
+                   lfe
+                   scheme)
       code-modes (apply #'append
                         (list lisp-modes
                               '(erlang
