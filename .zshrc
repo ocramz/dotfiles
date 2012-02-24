@@ -16,7 +16,7 @@ alias l="ls -la"
 each() {
     find=$1 ; shift
     for found in $(find $PWD -name $find); do
-	dir=$(dirname $found)
+        dir=$(dirname $found)
         pushd "${dir}" >/dev/null
         echo $dir && $@
         popd >/dev/null
@@ -107,12 +107,12 @@ fi
 if [ -d /Applications ]; then
 
     export JAVA_HOME=$(/usr/libexec/java_home)
-    
-    openmeta() { each $1 openmeta -p $PWD -a $2 }
+
+    find-tag() { each $1 openmeta -p $(eval 'pwd') -a $2 }
 
     finder-hide-files() {
-	defaults write com.apple.finder AppleShowAllFiles $1 ;# TRUE | FALSE
-	killall Finder
+        defaults write com.apple.finder AppleShowAllFiles $1 ;# TRUE | FALSE
+        killall Finder
     }
 
 fi
