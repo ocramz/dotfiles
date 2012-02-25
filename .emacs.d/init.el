@@ -153,6 +153,8 @@
 
 ;; code modes
 
+(setq indent-tabs-mode nil)
+
 (defun buffer-cleanup ()
   "Clean up the buffer"
   (interactive)
