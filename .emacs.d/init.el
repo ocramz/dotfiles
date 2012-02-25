@@ -224,7 +224,13 @@
 (defun after-haskell-mode-exts ()
   (add-hook 'haskell-mode-exts-hook 'my-haskell-mode-exts-hook))
 
+;; julia
 
+(defun after-julia-mode ()
+  (add-to-list 'load-path "~/.emacs.d/el-get/julia-mode/contrib")
+  (require 'julia-mode)
+  (autoload 'julia-mode "julia" "Julia Mode")
+  (add-to-list 'auto-mode-alist '("\\.j\\'" . julia-mode)))
 
 ;; el-get
 
@@ -256,6 +262,8 @@
    (:name haskell-mode-exts :after (lambda () (after-haskell-mode-exts)))
    (:name lfe :after (lambda () (after-lfe))
           :type git :url "https://github.com/rvirding/lfe.git")
+   (:name julia-mode :after (lambda () (after-julia-mode))
+          :type git :url "https://github.com/JuliaLang/julia.git")
    (:name magit :after (lambda () (after-magit)))
    (:name magithub)
    (:name org-jira :type git :url "https://github.com/baohaojun/org-jira.git")
