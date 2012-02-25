@@ -199,12 +199,10 @@
   (erlang-flymake-only-on-save))
 
 (defun after-erlang ()
-  (add-to-list 'load-path "~/.emacs.d/el-get/erlang/lib/tools/emacs")
   (require 'erlang-start)
   (add-hook 'erlang-mode-hook 'my-erlang-mode-hook))
 
 (defun after-lfe ()
-  (add-to-list 'load-path "~/.emacs.d/el-get/lfe/emacs")
   (require 'lfe-start))
 
 ;; haskell
@@ -253,27 +251,38 @@
    (:name el-get)
    (:name epresent)
    (:name eredis)
-   (:name erlang :after (progn (after-erlang))
-          :type git :url "https://github.com/erlang/otp.git")
+   (:name erlang
+          :type github
+          :pkgname "erlang/otp"
+          :load-path ("lib/tools/emacs")
+          :after (progn (after-erlang)))
    (:name fic-ext-mode :after (progn (after-fic-ext-mode)))
    (:name geiser)
    (:name gist)
    (:name graphviz-dot-mode)
    (:name haskell-mode :after (progn (after-haskell-mode)))
    (:name haskell-mode-exts :after (progn (after-haskell-mode-exts)))
-   (:name lfe :after (progn (after-lfe))
-          :type git :url "https://github.com/rvirding/lfe.git")
-   (:name julia-mode :after (progn (after-julia-mode))
-          :type git :url "https://github.com/JuliaLang/julia.git")
+   (:name lfe
+          :type github
+          :pkgname "rvirding/lfe"
+          :load-path ("emacs")
+          :after (progn (after-lfe)))
+   (:name julia
+          :type github
+          :pkgname "JuliaLang/julia"
+          :load-path ("contrib")
+          :after (progn (after-julia)))
    (:name magit :after (progn (after-magit)))
    (:name magithub)
-   (:name org-jira :type git :url "https://github.com/baohaojun/org-jira.git")
+   (:name org-jira :type github :pkgname "baohaojun/org-jira")
    (:name paredit :after (progn (after-paredit)))
    (:name vhdl-mode
           :type http-zip
           :url "http://www.iis.ee.ethz.ch/~zimmi/emacs/vhdl-mode-3.33.28.zip")
-   (:name yasnippet :after (progn (after-yasnippet))
-          :type git :url "https://github.com/capitaomorte/yasnippet.git")))
+   (:name yasnippet
+          :type github
+          :pkgname "capitaomorte/yasnippet"
+          :after (progn (after-yasnippet)))))
 
 (el-get 'sync (mapcar 'el-get-source-name el-get-sources))
 
