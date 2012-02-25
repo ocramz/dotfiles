@@ -107,25 +107,7 @@
                                 sh
                                 vhdl))))
 
-(setq whitespace-action '(auto-cleanup)
-      whitespace-style  '(face tabs trailing lines-tail indentation empty))
-
-(defun buffer-cleanup ()
-  "Clean up the buffer"
-  (interactive)
-  (untabify (point-min) (point-max))
-  (indent-region (point-min) (point-max))
-  (delete-trailing-whitespace))
-
-(defun my-code-mode-hook ()
-  (whitespace-mode)
-  (local-set-key (kbd "C-m") 'newline-and-indent)
-  (local-set-key (kbd "C-x a r") 'align-regexp)
-  (local-set-key (kbd "C-c n") 'buffer-cleanup))
-
-(add-hook-to-modes code-modes 'my-code-mode-hook)
-
-;; pretty lambdas
+;; lisp modes
 
 (defun my-lisp-mode-hook ()
   (font-lock-add-keywords
@@ -136,12 +118,30 @@
 
 (add-hook-to-modes lisp-modes 'my-lisp-mode-hook)
 
-;; yasnippet
+;; code modes
 
-(defun after-yasnippet ()
-  (require 'yasnippet)
-  (add-to-list 'yas/snippet-dirs "~/.emacs.d/snippets")
-  (yas/global-mode))
+(defun buffer-cleanup ()
+  "Clean up the buffer"
+  (interactive)
+  (untabify (point-min) (point-max))
+  (indent-region (point-min) (point-max))
+  (delete-trailing-whitespace))
+
+(defun my-code-mode-hook ()
+  (local-set-key (kbd "C-m")     'newline-and-indent)
+  (local-set-key (kbd "C-c a r") 'align-regexp)
+  (local-set-key (kbd "C-c b c") 'buffer-cleanup))
+
+(add-hook-to-modes code-modes 'my-code-mode-hook)
+
+;; whitespace
+
+(defun my-whitespace-mode-hook ()
+  (setq whitespace-action '(auto-cleanup)
+        whitespace-style  '(face tabs trailing lines-tail indentation empty))
+  (whitespace-mode))
+
+(add-hook-to-modes code-modes 'my-whitespace-mode-hook)
 
 ;; paredit
 
@@ -149,12 +149,21 @@
   (paredit-mode t)
   (show-paren-mode t)
   (local-set-key (kbd "C-c (") 'paredit-backward-slurp-sexp)
-  (local-set-key (kbd "C-c )") 'paredit-forward-slurp-sexp)
   (local-set-key (kbd "C-c [") 'paredit-backward-slurp-sexp)
-  (local-set-key (kbd "C-c ]") 'paredit-forward-slurp-sexp))
+  (local-set-key (kbd "C-c {") 'paredit-backward-slurp-sexp)
+  (local-set-key (kbd "C-c )") 'paredit-forward-slurp-sexp)
+  (local-set-key (kbd "C-c ]") 'paredit-forward-slurp-sexp)
+  (local-set-key (kbd "C-c }") 'paredit-forward-slurp-sexp))
 
 (defun after-paredit ()
-  (add-hook-to-modes lisp-modes 'my-paredit-mode-hook))
+  (add-hook-to-modes code-modes 'my-paredit-mode-hook))
+
+;; yasnippet
+
+(defun after-yasnippet ()
+  (require 'yasnippet)
+  (add-to-list 'yas/snippet-dirs "~/.emacs.d/snippets")
+  (yas/global-mode))
 
 ;; magit
 
@@ -166,7 +175,7 @@
 (require 'flymake)
 
 (defun my-flymake-mode-hook ()
-  (local-set-key (kbd "C-c C-v") 'flymake-goto-next-error))
+  (local-set-key (kbd "C-c e") 'flymake-goto-next-error))
 
 (add-hook 'flymake-mode-hook 'my-flymake-mode-hook)
 (add-hook 'find-file-hook 'flymake-find-file-hook)
