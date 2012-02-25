@@ -246,7 +246,7 @@
       (eval-print-last-sexp))))
 
 (setq
- el-get-bzr-shallow-clone t
+ el-get-git-shallow-clone t
  el-get-sources
  '((:name clojure-mode)
    (:name deft :after (lambda () (after-deft)))
