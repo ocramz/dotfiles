@@ -180,8 +180,6 @@
 
 ;; flymake
 
-(require 'flymake)
-
 (defun my-flymake-mode-hook ()
   (local-set-key (kbd "C-c e") 'flymake-goto-next-error))
 
