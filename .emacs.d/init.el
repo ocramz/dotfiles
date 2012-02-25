@@ -242,42 +242,29 @@
  el-get-bzr-shallow-clone t
  el-get-sources
  '((:name clojure-mode)
-   (:name deft
-          :after (lambda () (after-deft)))
-   (:name erlang
-          :type git
-          :url "https://github.com/erlang/otp.git"
-          :after (lambda () (after-erlang)))
+   (:name deft :after (lambda () (after-deft)))
+   (:name el-get)
    (:name epresent)
    (:name eredis)
-   (:name el-get)
-   (:name fic-ext-mode
-          :after (lambda () (after-fic-ext-mode)))
+   (:name erlang :after (lambda () (after-erlang))
+          :type git :url "https://github.com/erlang/otp.git")
+   (:name fic-ext-mode :after (lambda () (after-fic-ext-mode)))
+   (:name geiser)
    (:name gist)
    (:name graphviz-dot-mode)
-   (:name haskell-mode
-          :after (lambda () (after-haskell-mode)))
-   (:name haskell-mode-exts
-          :after (lambda () (after-haskell-mode-exts)))
-   (:name lfe
-          :type git
-          :url "https://github.com/rvirding/lfe.git"
-          :after (lambda () (after-lfe)))
-   (:name magit
-          :after (lambda () (after-magit)))
+   (:name haskell-mode :after (lambda () (after-haskell-mode)))
+   (:name haskell-mode-exts :after (lambda () (after-haskell-mode-exts)))
+   (:name lfe :after (lambda () (after-lfe))
+          :type git :url "https://github.com/rvirding/lfe.git")
+   (:name magit :after (lambda () (after-magit)))
    (:name magithub)
-   (:name paredit
-          :after (lambda () (after-paredit)))
-   (:name org-jira
-          :type git
-          :url "https://github.com/baohaojun/org-jira.git")
-   (:name yasnippet
-          :type git
-          :url "https://github.com/capitaomorte/yasnippet.git"
-          :after (lambda () (after-yasnippet)))
+   (:name org-jira :type git :url "https://github.com/baohaojun/org-jira.git")
+   (:name paredit :after (lambda () (after-paredit)))
    (:name vhdl-mode
           :type http-zip
-          :url "http://www.iis.ee.ethz.ch/~zimmi/emacs/vhdl-mode-3.33.28.zip")))
+          :url "http://www.iis.ee.ethz.ch/~zimmi/emacs/vhdl-mode-3.33.28.zip")
+   (:name yasnippet :after (lambda () (after-yasnippet))
+          :type git :url "https://github.com/capitaomorte/yasnippet.git")))
 
 (el-get 'sync (mapcar 'el-get-source-name el-get-sources))
 
