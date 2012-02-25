@@ -154,9 +154,9 @@
   (delete-trailing-whitespace))
 
 (defun my-code-mode-hook ()
-  (local-set-key (kbd "C-m")     'newline-and-indent)
-  (local-set-key (kbd "C-c a r") 'align-regexp)
-  (local-set-key (kbd "C-c b c") 'buffer-cleanup))
+  (local-set-key (kbd "C-m")   'newline-and-indent)
+  (local-set-key (kbd "C-c r") 'align-regexp)
+  (local-set-key (kbd "C-c n") 'buffer-cleanup))
 
 (add-hook-to-modes code-modes 'my-code-mode-hook)
 
