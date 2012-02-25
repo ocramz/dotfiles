@@ -227,9 +227,7 @@
 
 ;; julia
 
-(defun after-julia-mode ()
-  (add-to-list 'load-path "~/.emacs.d/el-get/julia-mode/contrib")
-  (require 'julia-mode)
+(defun after-julia ()
   (autoload 'julia-mode "julia" "Julia Mode")
   (add-to-list 'auto-mode-alist '("\\.j\\'" . julia-mode)))
 
