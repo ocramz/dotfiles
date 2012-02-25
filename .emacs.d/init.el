@@ -91,6 +91,18 @@
       erc-server "irc.freenode.net"
       erc-user-full-name "Tim Dysinger")
 
+;; yasnippet
+
+(defun after-yasnippet ()
+  (require 'yasnippet)
+  (add-to-list 'yas/snippet-dirs "~/.emacs.d/snippets")
+  (yas/global-mode))
+
+;; magit
+
+(defun after-magit ()
+  (global-set-key (kbd "C-x g") 'magit-status))
+
 ;; coding
 
 (setq lisp-modes '(clojure
@@ -158,17 +170,13 @@
 (defun after-paredit ()
   (add-hook-to-modes code-modes 'my-paredit-mode-hook))
 
-;; yasnippet
+;; fic-ext-mode (FIXME/TODO highlighting)
 
-(defun after-yasnippet ()
-  (require 'yasnippet)
-  (add-to-list 'yas/snippet-dirs "~/.emacs.d/snippets")
-  (yas/global-mode))
+(defun my-fic-ext-mode-hook ()
+  (fic-ext-mode t))
 
-;; magit
-
-(defun after-magit ()
-  (global-set-key (kbd "C-x g") 'magit-status))
+(defun after-fic-ext-mode ()
+  (add-hook-to-modes code-modes 'my-fic-ext-mode-hook))
 
 ;; flymake
 
@@ -179,14 +187,6 @@
 
 (add-hook 'flymake-mode-hook 'my-flymake-mode-hook)
 (add-hook 'find-file-hook 'flymake-find-file-hook)
-
-;; fic-ext-mode (FIXME/TODO highlighting)
-
-(defun my-fic-ext-mode-hook ()
-  (fic-ext-mode t))
-
-(defun after-fic-ext-mode ()
-  (add-hook-to-modes code-modes 'my-fic-ext-mode-hook))
 
 ;; erlang
 
