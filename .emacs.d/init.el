@@ -85,6 +85,12 @@
 (define-key global-map (kbd "C-c c") 'org-capture)
 (define-key global-map (kbd "C-c l") 'org-store-link)
 
+;; deft
+
+(defun after-deft ()
+  (global-set-key (kbd "C-<f11>") 'deft-new-file)
+  (global-set-key (kbd "C-<f12>") 'deft))
+
 ;; erc
 
 (setq erc-nick "dysinger"
@@ -218,11 +224,7 @@
 (defun after-haskell-mode-exts ()
   (add-hook 'haskell-mode-exts-hook 'my-haskell-mode-exts-hook))
 
-;; deft
 
-(defun after-deft ()
-  (global-set-key (kbd "C-<f11>") 'deft-new-file)
-  (global-set-key (kbd "C-<f12>") 'deft))
 
 ;; el-get
 
