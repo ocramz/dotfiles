@@ -57,11 +57,8 @@
   (local-set-key (kbd "C-c s") 'org-sort)
   (local-set-key (kbd "C-c b") 'org-ido-switchb)
   (local-set-key (kbd "C-c v") 'org-agenda-toggle-visible))
-(add-hook 'org-mode-hook 'my-org-mode-hook)
 
-(define-key global-map (kbd "C-c a") 'org-agenda)
-(define-key global-map (kbd "C-c c") 'org-capture)
-(define-key global-map (kbd "C-c l") 'org-store-link)
+(add-hook 'org-mode-hook 'my-org-mode-hook)
 
 (setq org-agenda-custom-commands
       '(("vc" "View @COMPUTER" tags "+TODO=\"TODO\"+\@COMPUTER" nil)
@@ -83,6 +80,10 @@
                                     "DONE(d!)")
                           (sequence "|"
                                     "SKIP(s@)")))
+
+(define-key global-map (kbd "C-c a") 'org-agenda)
+(define-key global-map (kbd "C-c c") 'org-capture)
+(define-key global-map (kbd "C-c l") 'org-store-link)
 
 ;; erc
 
