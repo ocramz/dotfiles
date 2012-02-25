@@ -130,6 +130,19 @@
 
 (add-hook-to-modes lisp-modes 'my-lisp-mode-hook)
 
+;; paredit
+
+(defun my-paredit-mode-hook ()
+  (show-paren-mode t)
+  (paredit-mode t)
+  (local-set-key (kbd "C-c (") 'paredit-backward-slurp-sexp)
+  (local-set-key (kbd "C-c )") 'paredit-forward-slurp-sexp)
+  (local-set-key (kbd "C-c 9") 'paredit-backward-barf-sexp)
+  (local-set-key (kbd "C-c 0") 'paredit-forward-barf-sexp))
+
+(defun after-paredit ()
+  (add-hook-to-modes lisp-modes 'my-paredit-mode-hook))
+
 ;; code modes
 
 (defun buffer-cleanup ()
@@ -154,19 +167,6 @@
   (whitespace-mode))
 
 (add-hook-to-modes code-modes 'my-whitespace-mode-hook)
-
-;; paredit
-
-(defun my-paredit-mode-hook ()
-  (show-paren-mode t)
-  (paredit-mode t)
-  (local-set-key (kbd "C-c (") 'paredit-backward-slurp-sexp)
-  (local-set-key (kbd "C-c )") 'paredit-forward-slurp-sexp)
-  (local-set-key (kbd "C-c 9") 'paredit-backward-barf-sexp)
-  (local-set-key (kbd "C-c 0") 'paredit-forward-barf-sexp))
-
-(defun after-paredit ()
-  (add-hook-to-modes code-modes 'my-paredit-mode-hook))
 
 ;; fic-ext-mode (FIXME/TODO highlighting)
 
