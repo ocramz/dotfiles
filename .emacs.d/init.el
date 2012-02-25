@@ -120,6 +120,7 @@
                         (list lisp-modes
                               '(erlang
                                 haskell
+                                julia
                                 perl
                                 python
                                 ruby
