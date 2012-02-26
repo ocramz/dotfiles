@@ -45,7 +45,8 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 (defun after-smex ()
-  (global-set-key (kbd "M-x") 'smex))
+  (global-set-key (kbd "M-x") 'smex)
+  (global-set-key (kbd "M-X") 'execute-extended-command))
 
 ;; org-mode
 
