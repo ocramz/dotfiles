@@ -86,27 +86,27 @@
 (define-key global-map (kbd "C-c c") 'org-capture)
 (define-key global-map (kbd "C-c l") 'org-store-link)
 
-;; deft
+;; deft - full text search on quick/cheap free-form notes
 
 (defun after-deft ()
   (global-set-key (kbd "C-<f11>") 'deft-new-file)
   (global-set-key (kbd "C-<f12>") 'deft))
 
-;; erc
+;; erc - irc
 
 (setq erc-nick "dysinger"
       erc-prompt-for-channel-key t
       erc-server "irc.freenode.net"
       erc-user-full-name "Tim Dysinger")
 
-;; yasnippet
+;; yasnippet - template expansion system ftw
 
 (defun after-yasnippet ()
   (require 'yasnippet)
   (add-to-list 'yas/snippet-dirs "~/.emacs.d/snippets")
   (yas/global-mode))
 
-;; magit
+;; magit - git mode for awesome commits
 
 (defun after-magit ()
   (global-set-key (kbd "C-x g") 'magit-status))
@@ -139,7 +139,7 @@
 
 (add-hook-to-modes lisp-modes 'my-lisp-mode-hook)
 
-;; paredit
+;; paredit - cruise-control for lisp editing
 
 (defun my-paredit-mode-hook ()
   (show-paren-mode t)
@@ -170,7 +170,7 @@
 
 (add-hook-to-modes code-modes 'my-code-mode-hook)
 
-;; whitespace
+;; whitespace - because it's evil
 
 (defun my-whitespace-mode-hook ()
   (setq whitespace-action '(auto-cleanup)
@@ -179,7 +179,7 @@
 
 (add-hook-to-modes code-modes 'my-whitespace-mode-hook)
 
-;; fic-ext-mode (FIXME/TODO highlighting)
+;; fic-ext-mode - FIXME/TODO highlighting
 
 (defun my-fic-ext-mode-hook ()
   (fic-ext-mode t))
@@ -187,7 +187,7 @@
 (defun after-fic-ext-mode ()
   (add-hook-to-modes code-modes 'my-fic-ext-mode-hook))
 
-;; flymake
+;; flymake - builds your codes when you save
 
 (defun my-flymake-mode-hook ()
   (local-set-key (kbd "C-c e") 'flymake-goto-next-error))
@@ -232,7 +232,7 @@
   (autoload 'julia-mode "julia" "Julia Mode")
   (add-to-list 'auto-mode-alist '("\\.j\\'" . julia-mode)))
 
-;; el-get
+;; el-get - "emacsops"
 
 (require 'whitespace) ;; el-get bombs with '"Invalid face" whitespace-line'
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
