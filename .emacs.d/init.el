@@ -278,6 +278,7 @@
    (:name magithub)
    (:name org-jira :type github :pkgname "baohaojun/org-jira")
    (:name paredit :after (progn (after-paredit)))
+   (:name sicp)
    (:name sclang
           :type git
           :url "git://supercollider.git.sourceforge.net/gitroot/supercollider/supercollider"
