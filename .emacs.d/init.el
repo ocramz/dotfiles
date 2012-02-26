@@ -280,6 +280,7 @@
    (:name markdown-mode)
    (:name org-jira :type github :pkgname "baohaojun/org-jira")
    (:name paredit :after (progn (after-paredit)))
+   (:name protobuf-mode)
    (:name pastebin)
    (:name scala-mode)
    (:name sicp)
