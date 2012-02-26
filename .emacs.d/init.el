@@ -25,7 +25,7 @@
   (dolist (mode modes)
     (add-hook (intern (concat (symbol-name mode) "-mode-hook")) hook)))
 
-;; ido
+;; shortcuts
 
 (require 'ido)
 
@@ -40,9 +40,10 @@
       ido-use-filename-at-point 'guess
       ido-use-virtual-buffers t)
 
-;; y-is-yes/n-is-no
-
 (defalias 'yes-or-no-p 'y-or-n-p)
+
+(defun after-smex ()
+  (global-set-key (kbd "M-x") 'smex))
 
 ;; org-mode
 
@@ -277,6 +278,7 @@
    (:name magithub)
    (:name org-jira :type github :pkgname "baohaojun/org-jira")
    (:name paredit :after (progn (after-paredit)))
+   (:name smex :after (progn (after-smex)))
    (:name vhdl-mode
           :type http-zip
           :url "http://www.iis.ee.ethz.ch/~zimmi/emacs/vhdl-mode-3.33.28.zip")
