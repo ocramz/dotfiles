@@ -40,6 +40,8 @@
       ido-use-filename-at-point 'guess
       ido-use-virtual-buffers t)
 
+(require 'uniquify)
+
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 (defun after-smex ()
