@@ -276,6 +276,7 @@
           :after (progn (after-julia)))
    (:name magit :after (progn (after-magit)))
    (:name magithub)
+   (:name markdown-mode)
    (:name org-jira :type github :pkgname "baohaojun/org-jira")
    (:name paredit :after (progn (after-paredit)))
    (:name sicp)
