@@ -261,6 +261,7 @@
    (:name fic-ext-mode :after (progn (after-fic-ext-mode)))
    (:name geiser)
    (:name gist)
+   (:name go-mode)
    (:name graphviz-dot-mode)
    (:name haskell-mode :after (progn (after-haskell-mode)))
    (:name haskell-mode-exts :after (progn (after-haskell-mode-exts)))
