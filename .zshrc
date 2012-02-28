@@ -86,7 +86,7 @@ alias k=knife
 
 # vagrant
 
-alias vagrant="nocorrect vagrant"
+alias vagrant="nocorrect bundle exec vagrant"
 alias v=vagrant
 
 # nix
