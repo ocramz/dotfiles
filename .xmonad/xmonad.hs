@@ -1,5 +1,6 @@
 import XMonad
 import XMonad.Actions.CycleWS
+import XMonad.Actions.WithAll
 import XMonad.Config.Xfce
 import XMonad.Hooks.ManageHelpers
 import XMonad.Prompt
@@ -30,6 +31,7 @@ main = xmonad myConfig
       , ((myMask .|. shiftMask, xK_Down),  shiftToNext)
       , ((myMask .|. shiftMask, xK_Left),  shiftToPrev)
       , ((myMask .|. shiftMask, xK_Up),    shiftToPrev)
+      , ((myMask, xK_a), sinkAll)
       , ((myMask, xK_z), toggleWS)
       , ((myMask, xK_Print), spawn "scrot ~/screenshot-%Y-%m-%d.png")
       , ((myRunMask, xK_space), shellPrompt myXPConfig)
