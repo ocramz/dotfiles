@@ -13,13 +13,14 @@ main = xmonad myConfig
                               , manageHook = myManageHook
                               }
     myXPConfig   = greenXPConfig { autoComplete = Just 1
-                                 , font         = "Inconsolata:13"
+                                 , font         = myFont
                                  , position     = Bottom
                                  }
     myManageHook = manageHook xfceConfig <+> doCenterFloat
     myKeys       = customKeys (\_ -> []) (\_ -> myKeysToAdd)
     myRunMask    = myMask .|. controlMask
     myMask       = mod4Mask
+    myFont       = "xft:inconsolata:bold:size=13:antialias=true:hinting=light"
     myKeysToAdd  =
       [ ((myMask,               xK_Right), nextWS)
       , ((myMask,               xK_Down),  nextWS)
