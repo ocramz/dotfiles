@@ -1,46 +1,37 @@
 import XMonad
 import XMonad.Actions.CycleWS
-import XMonad.Config.Gnome
+import XMonad.Config.Xfce
+import XMonad.Hooks.ManageHelpers
 import XMonad.Prompt
-import XMonad.Prompt.Man
 import XMonad.Prompt.Shell
-import XMonad.Prompt.Ssh
-import XMonad.Prompt.XMonad
 import XMonad.Util.CustomKeys
 
-myFont = "xft:inconsolata:bold:size=13:antialias=true:hinting=true"
-
-myXPConfig =
-  greenXPConfig { autoComplete = Just 1
-                , font = myFont
-                , position = Bottom }
-
-myMask = mod4Mask
-myCmdMask = myMask .|. controlMask
-myKeys =
-  [ ((myMask, xK_Right), nextWS)
-  , ((myMask, xK_Left), prevWS)
-  , ((myMask .|. shiftMask, xK_Right), shiftToNext)
-  , ((myMask .|. shiftMask, xK_Left), shiftToPrev)
-  , ((myMask, xK_z), toggleWS)
-  , ((myMask, xK_Print), spawn "scrot ~/screenshot-%Y-%m-%d.png")
-  , ((myCmdMask, xK_space), shellPrompt myXPConfig)
-  , ((myCmdMask, xK_m), manPrompt myXPConfig)
-  , ((myCmdMask, xK_s), sshPrompt myXPConfig)
-  , ((myCmdMask, xK_x), xmonadPrompt myXPConfig)
- ]
-
-myTerminal = "urxvt -bg black -fg grey +sb"
-
-myConfig =
-  defaultConfig { modMask  = myMask
-                , keys     = customKeys (\_ -> []) (\_ -> myKeys)
-                , terminal = myTerm
-                }
-
-myGnomeConfig =
-  gnomeConfig { modMask  = myMask
-              , keys     = customKeys (\_ -> []) (\_ -> myKeys)
-              }
-
-main = xmonad myGnomeConfig
+main = xmonad myConfig
+  where
+    myConfig     = xfceConfig { modMask    = myMask
+                              , keys       = myKeys
+                              , manageHook = myManageHook
+                              }
+    myXPConfig   = greenXPConfig { autoComplete = Just 1
+                                 , font         = "Inconsolata:13"
+                                 , position     = Bottom
+                                 }
+    myManageHook = manageHook xfceConfig <+> doCenterFloat
+    myKeys       = customKeys (\_ -> []) (\_ -> myKeysToAdd)
+    myRunMask    = myMask .|. controlMask
+    myMask       = mod4Mask
+    myKeysToAdd  =
+      [ ((myMask,               xK_Right), nextWS)
+      , ((myMask,               xK_Down),  nextWS)
+      , ((myMask,               xK_Left),  prevWS)
+      , ((myMask,               xK_Up),    prevWS)
+      , ((myMask .|. shiftMask, xK_Right), shiftToNext)
+      , ((myMask .|. shiftMask, xK_Down),  shiftToNext)
+      , ((myMask .|. shiftMask, xK_Left),  shiftToPrev)
+      , ((myMask .|. shiftMask, xK_Up),    shiftToPrev)
+      , ((myMask, xK_z), toggleWS)
+      , ((myMask, xK_Print), spawn "scrot ~/screenshot-%Y-%m-%d.png")
+      , ((myRunMask, xK_space), shellPrompt myXPConfig)
+      , ((myRunMask, xK_f), spawn "firefox")
+      , ((myRunMask, xK_h), spawn "thunar ~")
+      ]
