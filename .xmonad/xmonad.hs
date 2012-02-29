@@ -17,7 +17,10 @@ main = xmonad myConfig
                                  , font         = myFont
                                  , position     = Bottom
                                  }
-    myManageHook = manageHook xfceConfig <+> doCenterFloat
+    myManageHook = manageHook xfceConfig <+> composeAll
+                   [ className =? "Xfce4-notifyd" --> doIgnore
+                   , doCenterFloat
+                   ]
     myKeys       = customKeys (\_ -> []) (\_ -> myKeysToAdd)
     myRunMask    = myMask .|. controlMask
     myMask       = mod4Mask
