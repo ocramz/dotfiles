@@ -92,8 +92,8 @@
 ;; deft - full text search on quick/cheap free-form notes
 
 (defun after-deft ()
-  (global-set-key (kbd "C-<f11>") 'deft-new-file)
-  (global-set-key (kbd "C-<f12>") 'deft))
+  (global-set-key (kbd "C-x z") 'deft)
+  (global-set-key (kbd "C-x Z") 'deft-new-file))
 
 ;; erc - irc
 
