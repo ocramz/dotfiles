@@ -1,0 +1,38 @@
+[apply]
+        whitespace = strip
+[alias]
+        b = branch
+        c = checkout
+        d = diff --word-diff
+        f = fetch
+        l = log --oneline --decorate
+        m = merge
+        p = pull
+        s = status -s
+        t = tag -a -m
+	autocommit = git commit -a -m $(date -u +%Y%m%d)
+	release = TAG=$(date -u +%Y%m%d) && git t $TAG $TAG
+	headless = git symbolic-ref HEAD refs/heads/$1 && rm .git/index && git clean -fdx
+[branch]
+        autosetuprebase = always
+[color]
+        branch = auto
+        diff = auto
+        interactive = auto
+        status = auto
+[core]
+        excludesfile = ~/.gitignore
+        quotepath = false
+[diff]
+        rename = copy
+[help]
+        autocorrect = 5
+[merge]
+        summary = true
+[push]
+        default = tracking
+[rerere]
+	enabled = 1
+[user]
+        email = tim@dysinger.net
+        name = Tim Dysinger
