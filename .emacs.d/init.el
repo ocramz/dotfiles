@@ -112,6 +112,7 @@
 ;; magit - git mode for awesome commits
 
 (defun after-magit ()
+  (add-hook 'magit-mode-hook 'turn-on-magit-topgit)
   (global-set-key (kbd "C-x g") 'magit-status))
 
 ;; coding
