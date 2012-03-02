@@ -162,14 +162,16 @@
 (defun buffer-cleanup ()
   "Clean up the buffer"
   (interactive)
+  (delete-blank-lines)
+  (delete-trailing-whitespace)
   (untabify (point-min) (point-max))
-  (indent-region (point-min) (point-max))
-  (delete-trailing-whitespace))
+  (indent-region (point-min) (point-max)))
+
+(global-set-key (kbd "C-c n") 'buffer-cleanup)
+(global-set-key (kbd "C-c r") 'align-regexp)
 
 (defun my-code-mode-hook ()
-  (local-set-key (kbd "C-m")   'newline-and-indent)
-  (local-set-key (kbd "C-c r") 'align-regexp)
-  (local-set-key (kbd "C-c n") 'buffer-cleanup))
+  (local-set-key (kbd "C-m") 'newline-and-indent))
 
 (add-hook-to-modes code-modes 'my-code-mode-hook)
 
