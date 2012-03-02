@@ -19,7 +19,7 @@ ScrollingBar=TERMINAL_SCROLLBAR_NONE
 FontName=Inconsolata Bold 12
 FontAllowBold=FALSE
 Term=xterm-256color
-BackgroundDarkness=0.960000
+BackgroundDarkness=0.750000
 ColorCursor=#9393a1a1a1a1
 ColorForeground=#FDFDF6F6E3E3
 ColorBackground=#00002B2B3636
@@ -39,3 +39,5 @@ ColorPalette13=#838394949696
 ColorPalette14=#6c6c7171c4c4
 ColorPalette15=#9393a1a1a1a1
 ColorPalette16=#fdfdf6f6e3e3
+BackgroundMode=TERMINAL_BACKGROUND_TRANSPARENT
+
