@@ -1,15 +1,15 @@
 ;; no decorations plz
-
 (dolist (mode '(menu-bar-mode tool-bar-mode scroll-bar-mode))
   (when (fboundp mode) (funcall mode -1)))
+(setq inhibit-startup-screen t)
 
 ;; backups
 
 (setq backup-by-copying t
       backup-directory-alist '(("." . "~/.emacs.d/backup"))
       delete-old-versions t
-      kept-new-versions 24
-      kept-old-versions 12
+      kept-new-versions 128
+      kept-old-versions 128
       version-control t)
 
 ;; emacsclient/server
