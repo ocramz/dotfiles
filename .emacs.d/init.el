@@ -223,6 +223,7 @@
   (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
   (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
   (add-hook 'haskell-mode-hook 'my-haskell-mode-hook)
+  (setq haskell-font-lock-symbols 'unicode)
   (setq haskell-program-name "cabal-dev ghci"))
 
 (defun my-haskell-mode-exts-hook
