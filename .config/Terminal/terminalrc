@@ -20,7 +20,6 @@ FontName=Inconsolata Bold 12
 FontAllowBold=FALSE
 Term=xterm-256color
 BackgroundDarkness=0.960000
-
 ColorCursor=#9393a1a1a1a1
 ColorForeground=#FDFDF6F6E3E3
 ColorBackground=#00002B2B3636
