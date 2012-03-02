@@ -33,10 +33,10 @@ myKeys =
   , ("M-s", sinkAll)
     -- quick-launch
   , ("M-f", spawn "firefox")
-  , ("M-<Print>", spawn "scrot ~/screenshot-%Y-%m-%d.png")
-  , ("M-<Home>", spawn "thunar ~")
+  , ("M-<Print>", spawn "scrot screenshot-%Y-%m-%d.png")
+  , ("M-<Home>", spawn "thunar")
     -- quick-prompts
-  , ("M-n", appendFilePrompt myXPConfig "~/org/inbox.org")
+  , ("M-n", appendFilePrompt myXPConfig "org/inbox.org")
   , ("M-C-<Space>", shellPrompt myXPConfig)
   ]
 
