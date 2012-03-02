@@ -36,7 +36,7 @@ myKeys =
   , ("M-<Print>", spawn "scrot ~/screenshot-%Y-%m-%d.png")
   , ("M-<Home>", spawn "thunar ~")
     -- quick-prompts
-  , ("M-n", appendFilePrompt "~/org/inbox.org")
+  , ("M-n", appendFilePrompt myXPConfig "~/org/inbox.org")
   , ("M-C-<Space>", shellPrompt myXPConfig)
   ]
 
