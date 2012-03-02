@@ -273,6 +273,7 @@
           :pkgname "rvirding/lfe"
           :load-path ("emacs")
           :after (progn (after-lfe)))
+   (:name notify)
    (:name julia
           :type github
           :pkgname "JuliaLang/julia"
