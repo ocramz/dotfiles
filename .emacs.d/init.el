@@ -154,10 +154,6 @@
 
 ;; erc - irc
 
-(setq erc-nick "dysinger"
-      erc-prompt-for-channel-key t
-      erc-server "irc.freenode.net"
-      erc-user-full-name "Tim Dysinger")
 
 ;; yasnippet - template expansion system ftw
 
