@@ -93,26 +93,3 @@ alias v=vagrant
 
 [[ -f /usr/local/etc/profile.d/nix.sh ]] \
     && source /usr/local/etc/profile.d/nix.sh
-
-# archlinux
-
-if [ -f /etc/arch-release ]; then
-
-    export JAVA_HOME=/usr/lib/jvm/java-7-openjdk
-
-fi
-
-# mac
-
-if [ -d /Applications ]; then
-
-    export JAVA_HOME=$(/usr/libexec/java_home)
-
-    find-tag() { each $1 openmeta -p $(eval 'pwd') -a $2 }
-
-    finder-hide-files() {
-        defaults write com.apple.finder AppleShowAllFiles $1 ;# TRUE | FALSE
-        killall Finder
-    }
-
-fi
