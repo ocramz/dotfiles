@@ -365,3 +365,12 @@
 
 (setq custom-file (expand-file-name "~/.emacs.d/custom.el"))
 (load custom-file 'noerror)
+
+;; custom.el contents:
+;;   erc-nick
+;;   erc-server
+;;   erc-user-full-name
+;;   org-agenda-tags-column
+;;   org-crypt-key
+;;   org-mobile-encryption-password
+;;   org-tags-column
