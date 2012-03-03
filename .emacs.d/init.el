@@ -154,6 +154,12 @@
 
 ;; erc - irc
 
+(require 'notifications)
+
+(defun erc-global-notify (match-type nick message)
+  (notifications-notify :title nick :body message :urgency 'low))
+
+(add-hook 'erc-text-matched-hook 'erc-global-notify)
 
 ;; yasnippet - template expansion system ftw
 
