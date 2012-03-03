@@ -145,6 +145,10 @@
 ;; deft - full text search on quick/cheap free-form notes
 
 (defun after-deft ()
+  (setq deft-directory org-directory
+        deft-extension "org"
+        deft-text-mode 'org-mode
+        deft-use-filename-as-title t)
   (global-set-key (kbd "C-x z") 'deft)
   (global-set-key (kbd "C-x Z") 'deft-new-file))
 
