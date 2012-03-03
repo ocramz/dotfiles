@@ -211,8 +211,6 @@
 
 ;; code modes
 
-(setq indent-tabs-mode nil)
-
 (defun buffer-cleanup ()
   "Clean up the buffer"
   (interactive)
@@ -231,12 +229,16 @@
 
 ;; whitespace - because it's evil
 
-(defun my-whitespace-mode-hook ()
-  (setq whitespace-action '(auto-cleanup)
-        whitespace-style  '(face tabs trailing lines-tail indentation empty))
-  (whitespace-mode))
+(setq column-number-mode t
+      indicate-empty-lines t
+      truncate-lines t)
 
-(add-hook-to-modes code-modes 'my-whitespace-mode-hook)
+(setq-default indent-tabs-mode nil)
+
+(setq whitespace-action '(auto-cleanup)
+      whitespace-style '(face tabs trailing lines-tail indentation empty))
+
+(add-hook-to-modes code-modes 'whitespace-mode)
 
 ;; fic-ext-mode - FIXME/TODO highlighting
 
