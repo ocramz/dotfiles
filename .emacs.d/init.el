@@ -72,22 +72,26 @@
         ("vs" "View @SHOP"     tags "+TODO=\"TODO\"+\@SHOP"     nil)
         ("vw" "View @WORK"     tags "+TODO=\"TODO\"+\@WORK"     nil))
       org-agenda-dim-blocked-tasks 'invisible
+      org-agenda-files '("~/org")
       org-agenda-skip-deadline-if-done t
       org-agenda-skip-deadline-prewarning-if-scheduled t
       org-agenda-skip-scheduled-if-done t
       org-agenda-todo-ignore-deadlines 'far
       org-agenda-todo-ignore-scheduled 'all
-      org-archive-location ".%s::"
+      org-archive-location "~/.emacs.d/org-archive/%s::"
       org-capture-templates '(("t" "Todo" entry
                                (file "~/org/inbox.org")
                                "* TODO %?" CAPTURED %u))
       org-clock-idle-time 15
       org-completion-use-ido t
+      org-default-notes-file "~/org/inbox.org"
+      org-directory "~/org"
       org-enable-priority-commands nil
       org-enforce-todo-checkbox-dependencies t
       org-enforce-todo-dependencies t
       org-export-latex-tables-centered t
       org-hide-leading-stars t
+      org-mobile-directory "~/Dropbox/MobileOrg"
       org-mobile-inbox-for-pull "~/org/from-mobile.org"
       org-mobile-use-encryption t
       org-log-done 'time
@@ -117,6 +121,7 @@
       org-return-follows-link t
       org-src-tab-acts-natively t
       org-src-fontify-natively t
+      org-src-window-setup 'current-window
       org-stuck-projects '("+TODO=\"PROJ\"" ("TODO") nil "")
       org-tag-alist '(("@COMPUTER" . ?c)
                       ("@ERRAND"   . ?e)
