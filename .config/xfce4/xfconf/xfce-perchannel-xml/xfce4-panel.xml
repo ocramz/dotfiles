@@ -33,7 +33,11 @@
     </property>
     <property name="plugin-6" type="string" value="systray">
       <property name="names-visible" type="array">
+        <value type="string" value="vlc"/>
+        <value type="string" value="ghb"/>
+        <value type="string" value="miro"/>
         <value type="string" value="dropbox"/>
+        <value type="string" value="gtk-recordmydesktop"/>
       </property>
     </property>
   </property>
