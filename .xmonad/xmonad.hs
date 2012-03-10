@@ -56,8 +56,9 @@ myKeys =
      ",mux=mp4" ++
      ",dst=screencam-$(date -u +%Y-%m-%d-%s).mp4}\"")
   , ("M-<Home>", spawn "thunar")
-    -- quick-prompts
+    -- append to inbox.org file
   , ("M-n", appendFilePrompt myXPConfig "org/inbox.org")
+    -- quick launcher bar
   , ("M-C-<Space>", shellPrompt myXPConfig)
   ]
 
