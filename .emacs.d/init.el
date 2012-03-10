@@ -220,7 +220,6 @@
 (defun buffer-cleanup ()
   "Clean up the buffer"
   (interactive)
-  (delete-blank-lines)
   (delete-trailing-whitespace)
   (untabify (point-min) (point-max))
   (indent-region (point-min) (point-max)))
