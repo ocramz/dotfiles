@@ -33,7 +33,28 @@ myKeys =
   , ("M-s", sinkAll)
     -- quick-launch
   , ("M-f", spawn "firefox")
+    -- screenshot
   , ("M-<Print>", spawn "scrot screenshot-%Y-%m-%d-%s.png")
+    -- screencam
+  , ("M-C-<Print>",
+     spawn $
+     "vlc screen://" ++
+     " --screen-fps=12" ++
+     " --input-slave=alsa://hw:1,0" ++
+     " --qt-start-minimized" ++
+     " --sout-transcode-high-priority" ++
+     " --sout \"#transcode" ++
+     "{venc=x264" ++
+     ",vcodec=h264" ++
+     ",fps=12" ++
+     ",vb=640" ++
+     ",acodec=acc" ++
+     ",channels=1" ++
+     ",ab=64}" ++
+     ":std" ++
+     "{access=file" ++
+     ",mux=mp4" ++
+     ",dst=screencam-$(date -u +%Y-%m-%d-%s).mp4}\"")
   , ("M-<Home>", spawn "thunar")
     -- quick-prompts
   , ("M-n", appendFilePrompt myXPConfig "org/inbox.org")
