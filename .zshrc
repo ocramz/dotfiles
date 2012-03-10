@@ -79,6 +79,8 @@ eunit() {
     && PATH=~/.rbenv/bin:$PATH \
     && eval "$(rbenv init -)"
 
+alias b="noglob bundle exec"
+
 # chef
 
 alias knife="nocorrect knife"
