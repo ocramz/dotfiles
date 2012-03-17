@@ -13,8 +13,6 @@
 	autocommit = git commit -a -m $(date -u +%Y%m%d)
 	release = TAG=$(date -u +%Y%m%d) && git t $TAG $TAG
 	headless = git symbolic-ref HEAD refs/heads/$1 && rm .git/index && git clean -fdx
-[branch]
-        autosetuprebase = always
 [color]
         branch = auto
         diff = auto
