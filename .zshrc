@@ -73,6 +73,12 @@ eunit() {
     done
 }
 
+# python
+
+# FIXME oh-my-zsh prompt sucks
+[[ -f ~/.python/bin/activate ]] \
+    && source ~/.python/bin/activate
+
 # ruby
 
 [[ -d ~/.gem/ruby/1.9.1/bin ]] && PATH=~/.gem/ruby/1.9.1/bin:$PATH
