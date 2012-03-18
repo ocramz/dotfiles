@@ -66,6 +66,6 @@ myXPConfig =
                 , font         = myFont
                 , position     = Bottom
                 }
-myFont = "xft:inconsolata:bold:size=13:antialias=true:hinting=light"
+myFont = "xft:Inconsolata:bold:size=12:antialias=true:hinting=light"
 
 main = xmonad myConfig
