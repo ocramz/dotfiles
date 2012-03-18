@@ -15,7 +15,6 @@ myConfig =
 
 myManageHook =
   composeAll [ className =? "Xfce4-notifyd" --> doIgnore
-             , doCenterFloat
              ]
 
 myKeys =
