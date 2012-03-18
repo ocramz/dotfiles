@@ -16,14 +16,14 @@
   <property name="Xft" type="empty">
     <property name="DPI" type="empty"/>
     <property name="Antialias" type="empty"/>
-    <property name="HintStyle" type="empty"/>
+    <property name="HintStyle" type="string" value="hintslight"/>
     <property name="Hinting" type="int" value="-1"/>
     <property name="RGBA" type="string" value="none"/>
   </property>
   <property name="Gtk" type="empty">
     <property name="CanChangeAccels" type="bool" value="false"/>
     <property name="ColorPalette" type="string" value="black:white:gray50:red:purple:blue:light blue:green:yellow:orange:lavender:brown:goldenrod4:dodger blue:pink:light green:gray10:gray30:gray75:gray90"/>
-    <property name="FontName" type="string" value="Sans 10"/>
+    <property name="FontName" type="string" value="Sans 12"/>
     <property name="IconSizes" type="string" value=""/>
     <property name="KeyThemeName" type="string" value=""/>
     <property name="ToolbarStyle" type="string" value="icons"/>
