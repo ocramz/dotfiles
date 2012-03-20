@@ -39,21 +39,14 @@ myKeys =
      spawn $
      "vlc screen://" ++
      " --screen-fps=12" ++
-     " --input-slave=alsa://hw:1,0" ++
+     " --input-slave=alsa://" ++
      " --qt-start-minimized" ++
      " --sout-transcode-high-priority" ++
-     " --sout \"#transcode" ++
-     "{venc=x264" ++
-     ",vcodec=h264" ++
-     ",fps=12" ++
-     ",vb=640" ++
-     ",acodec=acc" ++
-     ",channels=1" ++
-     ",ab=64}" ++
-     ":std" ++
-     "{access=file" ++
-     ",mux=mp4" ++
-     ",dst=screencam-$(date -u +%Y-%m-%d-%s).mp4}\"")
+     " --sout \"" ++
+     "#transcode{venc=x264,vcodec=h264,fps=12,vb=640,acodec=mp3,channels=1,ab=64}" ++
+     ":standard{access=file,mux=mp4,dst=screencast-$(date -u +%Y-%m-%d-%s).avi}" ++
+     "\""
+     )
   , ("M-<Home>", spawn "thunar")
     -- append to inbox.org file
   , ("M-n", appendFilePrompt myXPConfig "org/inbox.org")
