@@ -3,6 +3,7 @@ import XMonad.Actions.CycleWS
 import XMonad.Actions.WithAll
 import XMonad.Config.Xfce
 import XMonad.Hooks.ManageHelpers
+import XMonad.Hooks.SetWMName
 import XMonad.Prompt
 import XMonad.Prompt.AppendFile
 import XMonad.Prompt.Shell
@@ -10,6 +11,7 @@ import XMonad.Util.EZConfig
 
 myConfig =
   xfceConfig { modMask    = mod4Mask
+             , startupHook = setWMName "LG3D"
              , manageHook = manageHook xfceConfig <+> myManageHook
              } `additionalKeysP` myKeys
 
