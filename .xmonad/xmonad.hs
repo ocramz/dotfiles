@@ -5,6 +5,7 @@ import XMonad.Config.Xfce
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.SetWMName
 import XMonad.Layout.MouseResizableTile
+import XMonad.Layout.NoBorders
 import XMonad.Prompt
 import XMonad.Prompt.AppendFile
 import XMonad.Prompt.Shell
@@ -15,13 +16,24 @@ main = replace >> xmonad myConfig
 
 myConfig =
   xfceConfig { modMask     = mod4Mask
-             , startupHook = setWMName "LG3D"
-             , layoutHook  = layoutHook xfceConfig ||| mouseResizableTile
-             , manageHook  = manageHook xfceConfig <+> myManageHook
+             , startupHook = myStartupHook
+             , layoutHook  = myLayoutHook
+             , manageHook  = myManageHook
              } `additionalKeysP` myKeys
 
+myStartupHook = do
+  setWMName "LG3D"
+
+myLayoutHook =
+  smartBorders $ layoutHook xfceConfig ||| mouseResizableTile
+
 myManageHook =
-  composeAll [ className =? "Xfce4-notifyd" --> doIgnore
+  manageHook xfceConfig <+>
+  composeAll [ className =? "Gimp-2.6"      --> doFloat
+             , className =? "Synapse"       --> doIgnore
+             , className =? "Xfburn"        --> doCenterFloat
+             , className =? "Xfce4-notifyd" --> doIgnore
+             , isFullscreen                 --> doFullFloat
              ]
 
 myKeys =
