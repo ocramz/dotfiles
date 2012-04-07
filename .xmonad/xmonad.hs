@@ -8,6 +8,9 @@ import XMonad.Prompt
 import XMonad.Prompt.AppendFile
 import XMonad.Prompt.Shell
 import XMonad.Util.EZConfig
+import XMonad.Util.Replace
+
+main = replace >> xmonad myConfig
 
 myConfig =
   xfceConfig { modMask    = mod4Mask
@@ -63,4 +66,3 @@ myXPConfig =
                 }
 myFont = "xft:Inconsolata:bold:size=12:antialias=true:hinting=light"
 
-main = xmonad myConfig
