@@ -66,5 +66,5 @@ myXPConfig =
                 , font         = myFont
                 , position     = Bottom
                 }
-myFont = "xft:Inconsolata:bold:size=12:antialias=true:hinting=light"
 
+myFont = "xft:Inconsolata:bold:size=12:antialias=true:hinting=light"
