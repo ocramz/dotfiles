@@ -4,6 +4,7 @@ import XMonad.Actions.WithAll
 import XMonad.Config.Xfce
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.SetWMName
+import XMonad.Layout.MouseResizableTile
 import XMonad.Prompt
 import XMonad.Prompt.AppendFile
 import XMonad.Prompt.Shell
@@ -13,9 +14,10 @@ import XMonad.Util.Replace
 main = replace >> xmonad myConfig
 
 myConfig =
-  xfceConfig { modMask    = mod4Mask
+  xfceConfig { modMask     = mod4Mask
              , startupHook = setWMName "LG3D"
-             , manageHook = manageHook xfceConfig <+> myManageHook
+             , layoutHook  = layoutHook xfceConfig ||| mouseResizableTile
+             , manageHook  = manageHook xfceConfig <+> myManageHook
              } `additionalKeysP` myKeys
 
 myManageHook =
