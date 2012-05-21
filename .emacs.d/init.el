@@ -179,7 +179,6 @@
 
 (setq lisp-modes '(clojure
                    emacs-lisp
-                   lfe
                    scheme)
       code-modes (apply #'append
                         (list lisp-modes
@@ -271,9 +270,6 @@
 (defun after-erlang ()
   (require 'erlang-start)
   (add-hook 'erlang-mode-hook 'my-erlang-mode-hook))
-
-(defun after-lfe ()
-  (require 'lfe-start))
 
 ;; haskell
 
