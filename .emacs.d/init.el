@@ -140,7 +140,6 @@
 
 (define-key global-map (kbd "C-c a") 'org-agenda)
 (define-key global-map (kbd "C-c c") 'org-capture)
-(define-key global-map (kbd "C-c l") 'org-store-link)
 
 ;; deft - full text search on quick/cheap free-form notes
 
