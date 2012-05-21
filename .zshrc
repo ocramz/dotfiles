@@ -71,7 +71,6 @@ screencast() {
 [[ -d ~/.cabal/bin ]] \
     && PATH=~/.cabal/bin:$PATH \
 
-alias cabal-dev="nocorrect cabal-dev"
 alias c=cabal-dev
 
 # erlang
