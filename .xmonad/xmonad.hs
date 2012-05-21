@@ -1,7 +1,7 @@
 import XMonad
 import XMonad.Actions.CycleWS
 import XMonad.Actions.WithAll
-import XMonad.Config.Xfce
+import XMonad.Config.Gnome
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.SetWMName
 import XMonad.Layout.MouseResizableTile
@@ -15,25 +15,25 @@ import XMonad.Util.Replace
 main = replace >> xmonad myConfig
 
 myConfig =
-  xfceConfig { modMask     = mod4Mask
-             , startupHook = myStartupHook
-             , layoutHook  = myLayoutHook
-             , manageHook  = myManageHook
-             } `additionalKeysP` myKeys
+  gnomeConfig { modMask     = mod4Mask
+              , startupHook = myStartupHook
+              , layoutHook  = myLayoutHook
+              , manageHook  = myManageHook
+              } `additionalKeysP` myKeys
 
 myStartupHook = do
   setWMName "LG3D"
 
 myLayoutHook =
-  smartBorders $ layoutHook xfceConfig ||| mouseResizableTile
+  smartBorders $ layoutHook gnomeConfig ||| mouseResizableTile
 
 myManageHook =
-  manageHook xfceConfig <+>
-  composeAll [ className =? "Gimp-2.6"      --> doFloat
-             , className =? "Synapse"       --> doIgnore
-             , className =? "Xfburn"        --> doCenterFloat
-             , className =? "Xfce4-notifyd" --> doIgnore
-             , isFullscreen                 --> doFullFloat
+  manageHook gnomeConfig <+>
+  composeAll [ className =? "Dia"               --> doFloat
+             , className =? "Gimp-2.6"          --> doFloat
+             , className =? "Glade"             --> doFloat
+             , className =? "Synapse"           --> doIgnore
+             , isFullscreen                     --> doFullFloat
              ]
 
 myKeys =
