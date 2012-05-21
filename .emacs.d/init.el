@@ -312,56 +312,68 @@
 (setq
  el-get-git-shallow-clone t
  el-get-sources
- '((:name clojure-mode)
+ '((:name el-get)
+   ;; general
    (:name deft :after (progn (after-deft)))
-   (:name el-get)
-   (:name epresent)
-   (:name eredis)
+   ;; (:name epresent)
+   (:name fic-ext-mode :after (progn (after-fic-ext-mode)))
+   ;; (:name gist)
+   (:name notify)
+   ;; (:name pastebin)
+   ;; (:name perspective)
+   (:name smex :after (progn (after-smex)))
+   (:name yasnippet :after (progn (after-yasnippet)))
+   ;; auto-complete
+   (:name auto-complete)
+   (:name auto-complete-chunk)
+   (:name auto-complete-clang)
+   (:name auto-complete-css)
+   (:name auto-complete-emacs-lisp)
+   (:name auto-complete-etags)
+   (:name auto-complete-extension)
+   (:name auto-complete-latex)
+   (:name auto-complete-rst)
+   ;; (:name auto-complete-ruby) ;; broken
+   (:name auto-complete-yasnippet)
+   ;; git
+   (:name magit :after (progn (after-magit)))
+   (:name magithub)
+   ;; haskell
+   (:name haskell-mode)
+   (:name haskell-mode-exts)
+   (:name ghc-mod
+          :depends (haskell-mode haskell-mode-exts)
+          :after (progn (after-ghc-mod)))
+   ;; lisp
+   ;; TODO Broken (:name clojure-mode)
+   (:name geiser)
+   (:name paredit :after (progn (after-paredit)))
+   (:name sicp)
+   ;; misc code modes
    (:name erlang
           :type github
           :pkgname "erlang/otp"
           :load-path ("lib/tools/emacs")
           :after (progn (after-erlang)))
-   (:name fic-ext-mode :after (progn (after-fic-ext-mode)))
-   (:name geiser)
-   (:name gist)
+   (:name fsharp-mode)
+   (:name gnuplot-mode)
    (:name go-mode)
    (:name graphviz-dot-mode)
-   (:name haskell-mode :after (progn (after-haskell-mode)))
-   (:name haskell-mode-exts :after (progn (after-haskell-mode-exts)))
-   (:name lfe
-          :type github
-          :pkgname "rvirding/lfe"
-          :load-path ("emacs")
-          :after (progn (after-lfe)))
-   (:name notify)
+   (:name groovy-emacs-mode :type bzr :url "lp:groovy-emacs-mode")
+   (:name js2-mode)
    (:name julia
           :type github
           :pkgname "JuliaLang/julia"
           :load-path ("contrib")
           :after (progn (after-julia)))
-   (:name magit :after (progn (after-magit)))
-   (:name magithub)
+   (:name lua-mode)
    (:name markdown-mode)
-   (:name org-jira :type github :pkgname "baohaojun/org-jira")
-   (:name paredit :after (progn (after-paredit)))
-   (:name perspective)
    (:name protobuf-mode)
-   (:name pastebin)
    (:name scala-mode)
-   (:name sicp)
-   (:name sclang
-          :type git
-          :url "git://supercollider.git.sourceforge.net/gitroot/supercollider/supercollider"
-          :load-path ("editors/scel/el"))
-   (:name smex :after (progn (after-smex)))
+   (:name textile-mode)
    (:name vhdl-mode
           :type http-zip
-          :url "http://www.iis.ee.ethz.ch/~zimmi/emacs/vhdl-mode-3.33.28.zip")
-   (:name yasnippet
-          :type github
-          :pkgname "capitaomorte/yasnippet"
-          :after (progn (after-yasnippet)))))
+          :url "http://www.iis.ee.ethz.ch/~zimmi/emacs/vhdl-mode-3.33.28.zip")))
 
 (el-get 'sync (mapcar 'el-get-source-name el-get-sources))
 
