@@ -311,7 +311,6 @@
 
 (setq
  el-get-git-shallow-clone t
- el-get-github-default-url-type 'git
  el-get-sources
  '((:name clojure-mode)
    (:name deft :after (progn (after-deft)))
