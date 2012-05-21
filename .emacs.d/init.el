@@ -300,7 +300,6 @@
 
 ;; el-get - "emacsops"
 
-(require 'whitespace) ;; el-get bombs with '"Invalid face" whitespace-line'
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 (unless (require 'el-get nil t)
   (with-current-buffer
