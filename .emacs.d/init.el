@@ -185,9 +185,11 @@
                               '(erlang
                                 haskell
                                 julia
+                                lua
                                 perl
                                 python
                                 ruby
+                                scala
                                 sh
                                 vhdl))))
 
