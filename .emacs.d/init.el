@@ -275,22 +275,13 @@
 
 ;; haskell
 
-(defun my-haskell-mode-hook ()
-  (require 'inf-haskell-send-cmd))
-
-(defun after-haskell-mode ()
-  (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
-  (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
-  (add-hook 'haskell-mode-hook 'my-haskell-mode-hook)
-  (setq haskell-font-lock-symbols 'unicode)
-  (setq haskell-program-name "cabal-dev ghci"))
-
-(defun my-haskell-mode-exts-hook
-  (require 'haskell-align-imports)
-  (require 'haskell-sort-imports))
-
-(defun after-haskell-mode-exts ()
-  (add-hook 'haskell-mode-exts-hook 'my-haskell-mode-exts-hook))
+(defun after-ghc-mod ()
+  ;; (add-to-list 'completion-ignored-extensions ".hi")
+  (autoload 'ghc-init "ghc" nil t)
+  (add-hook 'haskell-mode-hook 'capitalized-words-mode)
+  (add-hook 'haskell-mode-hook 'ghc-init)
+  (add-hook 'haskell-mode-hook 'turn-on-font-lock)
+  (add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan))
 
 ;; julia
 
