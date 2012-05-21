@@ -251,6 +251,7 @@
   (fic-ext-mode t))
 
 (defun after-fic-ext-mode ()
+  (require 'fic-ext-mode)
   (add-hook-to-modes code-modes 'my-fic-ext-mode-hook))
 
 ;; flymake - builds your codes when you save
