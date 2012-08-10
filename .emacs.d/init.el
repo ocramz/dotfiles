@@ -256,6 +256,13 @@
 
 (add-hook-to-modes code-modes 'whitespace-mode)
 
+;; theme
+
+(defun after-solarized ()
+  (add-to-list 'custom-theme-load-path
+               "~/.emacs.d/el-get/color-theme-solarized")
+  (when (window-system) (load-theme 'solarized-dark t)))
+
 ;; fic-ext-mode - FIXME/TODO highlighting
 
 (defun my-fic-ext-mode-hook ()
@@ -316,6 +323,7 @@
  '((:name el-get)
    ;; general
    (:name deft :after (progn (after-deft)))
+   (:name color-theme-solarized :after (progn (after-solarized)))
    ;; (:name epresent)
    (:name fic-ext-mode :after (progn (after-fic-ext-mode)))
    ;; (:name gist)
