@@ -317,6 +317,11 @@
   (autoload 'julia-mode "julia" "Julia Mode")
   (add-to-list 'auto-mode-alist '("\\.j\\'" . julia-mode)))
 
+;; javascript
+
+(defun after-js2-mode ()
+  (setq js2-basic-offset 2))
+
 ;; el-get - "emacsops"
 
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
@@ -394,7 +399,8 @@
    (:name textile-mode)
    (:name vhdl-mode
           :type http-zip
-          :url "http://www.iis.ee.ethz.ch/~zimmi/emacs/vhdl-mode-3.33.28.zip")))
+          :url "http://www.iis.ee.ethz.ch/~zimmi/emacs/vhdl-mode-3.33.28.zip")
+   (:name yaml-mode)))
 
 (el-get 'sync (mapcar 'el-get-source-name el-get-sources))
 
