@@ -280,6 +280,11 @@
 (add-hook 'flymake-mode-hook 'my-flymake-mode-hook)
 (add-hook 'find-file-hook 'flymake-find-file-hook)
 
+;; auto-complete
+
+(defun turn-on-auto-complete ()
+  (auto-complete-mode 1))
+
 ;; erlang
 
 (defun my-erlang-mode-hook ()
@@ -333,7 +338,8 @@
    (:name smex :after (progn (after-smex)))
    (:name yasnippet :after (progn (after-yasnippet)))
    ;; auto-complete
-   (:name auto-complete)
+   (:name auto-complete :features auto-complete)
+   (:name auto-complete+)
    (:name auto-complete-chunk)
    (:name auto-complete-clang)
    (:name auto-complete-css)
