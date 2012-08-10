@@ -3,6 +3,16 @@
   (when (fboundp mode) (funcall mode -1)))
 (setq inhibit-startup-screen t)
 
+;; mac settings
+
+(when (and (window-system) (eq system-type 'darwin))
+  (progn
+    (set-frame-font "Menlo-13")
+    (let ((path (shell-command-to-string ". ~/.zshrc; echo -n $PATH")))
+      (setenv "PATH" path)
+      (setq exec-path
+            (append (split-string-and-unquote path ":") exec-path)))))
+
 ;; backups
 
 (setq backup-by-copying t
