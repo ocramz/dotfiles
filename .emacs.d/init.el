@@ -297,13 +297,19 @@
 
 ;; haskell
 
+(defun my-haskell-mode-hook ()
+  (ghc-init)
+  (add-to-list 'ac-sources 'ac-source-ghc-mod))
+
 (defun after-ghc-mod ()
-  ;; (add-to-list 'completion-ignored-extensions ".hi")
   (autoload 'ghc-init "ghc" nil t)
+  (require 'auto-complete-config)
+  (add-hook 'haskell-mode-hook 'my-haskell-mode-hook)
   (add-hook 'haskell-mode-hook 'capitalized-words-mode)
-  (add-hook 'haskell-mode-hook 'ghc-init)
-  (add-hook 'haskell-mode-hook 'turn-on-font-lock)
-  (add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan))
+  (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
+  (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+  (add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan)
+  (add-hook 'haskell-mode-hook 'turn-on-auto-complete))
 
 ;; julia
 
@@ -357,7 +363,7 @@
    (:name haskell-mode)
    (:name haskell-mode-exts)
    (:name ghc-mod
-          :depends (haskell-mode haskell-mode-exts)
+          :depends (auto-complete haskell-mode haskell-mode-exts)
           :after (progn (after-ghc-mod)))
    ;; lisp
    ;; TODO Broken (:name clojure-mode)
