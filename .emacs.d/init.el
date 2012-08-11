@@ -253,9 +253,10 @@
 ;; theme
 
 (defun after-solarized ()
-  (add-to-list 'custom-theme-load-path
-               "~/.emacs.d/el-get/color-theme-solarized")
-  (when (window-system) (load-theme 'solarized-dark t)))
+  (when (window-system)
+    (add-to-list 'custom-theme-load-path
+                 "~/.emacs.d/el-get/color-theme-solarized")
+    (load-theme 'solarized-dark t)))
 
 ;; fic-ext-mode - FIXME/TODO highlighting
 
