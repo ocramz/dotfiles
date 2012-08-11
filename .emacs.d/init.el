@@ -166,15 +166,6 @@
   (global-set-key (kbd "C-x z") 'deft)
   (global-set-key (kbd "C-x Z") 'deft-new-file))
 
-;; erc - irc
-
-(require 'notifications)
-
-(defun erc-global-notify (match-type nick message)
-  (notifications-notify :title nick :body message :urgency 'low))
-
-(add-hook 'erc-text-matched-hook 'erc-global-notify)
-
 ;; yasnippet - template expansion system ftw
 
 (defun after-yasnippet ()
@@ -348,7 +339,6 @@
    ;; (:name epresent)
    (:name fic-ext-mode :after (progn (after-fic-ext-mode)))
    ;; (:name gist)
-   (:name notify)
    ;; (:name pastebin)
    ;; (:name perspective)
    (:name smex :after (progn (after-smex)))
