@@ -92,6 +92,8 @@
       org-agenda-todo-ignore-deadlines 'far
       org-agenda-todo-ignore-scheduled 'all
       org-archive-location "~/.emacs.d/org-archive/%s::"
+      org-babel-load-languages '((ditaa . t) (dot . t) (ruby . t) (clojure . t)
+                                 (python . t) (sh . t) (emacs-lisp . t))
       org-capture-templates '(("t" "Todo" entry
                                (file "~/org/inbox.org")
                                "* TODO %?" CAPTURED %u))
