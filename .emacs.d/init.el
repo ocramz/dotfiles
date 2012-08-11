@@ -289,19 +289,19 @@
 
 ;; haskell
 
-(defun my-haskell-mode-hook ()
-  (ghc-init)
-  (add-to-list 'ac-sources 'ac-source-ghc-mod))
-
 (defun after-ghc-mod ()
+  ;; ghc-mod
   (autoload 'ghc-init "ghc" nil t)
+  (add-hook 'haskell-mode-hook (lambda () (ghc-init)))
+  ;; auto-complete w/ ghc-mod
   (require 'auto-complete-config)
-  (add-hook 'haskell-mode-hook 'my-haskell-mode-hook)
+  (add-hook 'haskell-mode-hook 'turn-on-auto-complete)
+  (add-to-list 'ac-sources 'ac-source-ghc-mod)
+  ;; normal haskell-mode hooks
   (add-hook 'haskell-mode-hook 'capitalized-words-mode)
   (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
   (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
-  (add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan)
-  (add-hook 'haskell-mode-hook 'turn-on-auto-complete))
+  (add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan))
 
 ;; julia
 
