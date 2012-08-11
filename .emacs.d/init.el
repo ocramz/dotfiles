@@ -259,12 +259,8 @@
 
 ;; fic-ext-mode - FIXME/TODO highlighting
 
-(defun my-fic-ext-mode-hook ()
-  (fic-ext-mode t))
-
 (defun after-fic-ext-mode ()
-  (require 'fic-ext-mode)
-  (add-hook-to-modes code-modes 'my-fic-ext-mode-hook))
+  (add-hook-to-modes code-modes (lambda () (fic-ext-mode t))))
 
 ;; flymake - builds your codes when you save
 
@@ -333,7 +329,9 @@
    (:name deft :after (progn (after-deft)))
    (:name color-theme-solarized :after (progn (after-solarized)))
    ;; (:name epresent)
-   (:name fic-ext-mode :after (progn (after-fic-ext-mode)))
+   (:name fic-ext-mode
+          :features fic-ext-mode
+          :after (progn (after-fic-ext-mode)))
    ;; (:name gist)
    ;; (:name pastebin)
    ;; (:name perspective)
