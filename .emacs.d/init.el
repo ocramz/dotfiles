@@ -264,10 +264,8 @@
 
 ;; flymake - builds your codes when you save
 
-(defun my-flymake-mode-hook ()
-  (local-set-key (kbd "C-c e") 'flymake-goto-next-error))
-
-(add-hook 'flymake-mode-hook 'my-flymake-mode-hook)
+(add-hook 'flymake-mode-hook
+          (lambda () (local-set-key (kbd "C-c e") 'flymake-goto-next-error)))
 (add-hook 'find-file-hook 'flymake-find-file-hook)
 
 ;; auto-complete
