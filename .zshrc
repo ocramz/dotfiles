@@ -97,10 +97,7 @@ eunit() {
 # ruby
 
 [[ -d ~/.gem/ruby/1.9.1/bin ]] && PATH=~/.gem/ruby/1.9.1/bin:$PATH
-
-[[ -d ~/.rbenv/bin ]] \
-    && PATH=~/.rbenv/bin:$PATH \
-    && eval "$(rbenv init -)"
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # chef
 
