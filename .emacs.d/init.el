@@ -70,6 +70,7 @@
             'invisible nil)))
 
 (defun my-org-mode-hook ()
+  (auto-revert-mode 1)
   (local-set-key (kbd "C-c s") 'org-sort)
   (local-set-key (kbd "C-c b") 'org-ido-switchb)
   (local-set-key (kbd "C-c v") 'org-agenda-toggle-visible))
