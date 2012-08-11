@@ -281,13 +281,11 @@
 
 ;; erlang
 
-(defun my-erlang-mode-hook ()
-  (require 'erlang-flymake)
-  (erlang-flymake-only-on-save))
-
 (defun after-erlang ()
-  (require 'erlang-start)
-  (add-hook 'erlang-mode-hook 'my-erlang-mode-hook))
+  (add-hook 'erlang-mode-hook
+            (lambda ()
+              (require 'erlang-flymake)
+              (erlang-flymake-only-on-save))))
 
 ;; haskell
 
@@ -373,6 +371,7 @@
           :type github
           :pkgname "erlang/otp"
           :load-path ("lib/tools/emacs")
+          :features erlang-start
           :after (progn (after-erlang)))
    (:name fsharp-mode)
    (:name gnuplot-mode)
