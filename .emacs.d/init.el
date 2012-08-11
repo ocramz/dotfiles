@@ -67,13 +67,13 @@
         (if (eq org-agenda-dim-blocked-tasks nil)
             'invisible nil)))
 
-(defun my-org-mode-hook ()
-  (auto-revert-mode 1)
-  (local-set-key (kbd "C-c s") 'org-sort)
-  (local-set-key (kbd "C-c b") 'org-ido-switchb)
-  (local-set-key (kbd "C-c v") 'org-agenda-toggle-visible))
-
-(add-hook 'org-mode-hook 'my-org-mode-hook)
+(add-hook
+ 'org-mode-hook
+ (lambda ()
+   (auto-revert-mode 1)
+   (local-set-key (kbd "C-c s") 'org-sort)
+   (local-set-key (kbd "C-c b") 'org-ido-switchb)
+   (local-set-key (kbd "C-c v") 'org-agenda-toggle-visible)))
 
 (setq org-agenda-custom-commands
       '(("vc" "View @COMPUTER" tags "+TODO=\"TODO\"+\@COMPUTER" nil)
@@ -198,44 +198,46 @@
 
 ;; lisp modes
 
-(defun my-lisp-mode-hook ()
-  (font-lock-add-keywords
-   nil `(("(\\(lambda\\>\\)"
-          (0 (progn (compose-region (match-beginning 1) (match-end 1)
-                                    ,(make-char 'greek-iso8859-7 107))
-                    nil))))))
-
-(add-hook-to-modes lisp-modes 'my-lisp-mode-hook)
+(add-hook-to-modes
+ lisp-modes
+ (lambda ()
+   ;; pretty lambdas
+   (font-lock-add-keywords
+    nil `(("(\\(lambda\\>\\)"
+           (0 (progn (compose-region (match-beginning 1) (match-end 1)
+                                     ,(make-char 'greek-iso8859-7 107))
+                     nil)))))))
 
 ;; paredit - cruise-control for lisp editing
 
-(defun my-paredit-mode-hook ()
-  (show-paren-mode t)
-  (paredit-mode t)
-  (local-set-key (kbd "C-c (") 'paredit-backward-slurp-sexp)
-  (local-set-key (kbd "C-c )") 'paredit-forward-slurp-sexp)
-  (local-set-key (kbd "C-c 9") 'paredit-backward-barf-sexp)
-  (local-set-key (kbd "C-c 0") 'paredit-forward-barf-sexp))
-
 (defun after-paredit ()
-  (add-hook-to-modes lisp-modes 'my-paredit-mode-hook))
+  (add-hook-to-modes
+   lisp-modes
+   (lambda ()
+     (show-paren-mode t)
+     (paredit-mode t)
+     (local-set-key (kbd "C-c (") 'paredit-backward-slurp-sexp)
+     (local-set-key (kbd "C-c )") 'paredit-forward-slurp-sexp)
+     (local-set-key (kbd "C-c 9") 'paredit-backward-barf-sexp)
+     (local-set-key (kbd "C-c 0") 'paredit-forward-barf-sexp))))
 
 ;; code modes
 
-(defun buffer-cleanup ()
-  "Clean up the buffer"
-  (interactive)
-  (delete-trailing-whitespace)
-  (untabify (point-min) (point-max))
-  (indent-region (point-min) (point-max)))
+(global-set-key
+ (kbd "C-c n")
+ (lambda ()
+   ;; clean up buffer
+   (interactive)
+   (delete-trailing-whitespace)
+   (untabify (point-min) (point-max))
+   (indent-region (point-min) (point-max))))
 
-(global-set-key (kbd "C-c n") 'buffer-cleanup)
 (global-set-key (kbd "C-c r") 'align-regexp)
 
-(defun my-code-mode-hook ()
-  (local-set-key (kbd "C-m") 'newline-and-indent))
-
-(add-hook-to-modes code-modes 'my-code-mode-hook)
+(add-hook-to-modes
+ code-modes
+ (lambda ()
+   (local-set-key (kbd "C-m") 'newline-and-indent)))
 
 ;; whitespace - because it's evil
 
