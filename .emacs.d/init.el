@@ -366,7 +366,7 @@
           :depends (auto-complete haskell-mode haskell-mode-exts)
           :after (progn (after-ghc-mod)))
    ;; lisp
-   ;; TODO Broken (:name clojure-mode)
+   (:name clojure-mode)
    (:name geiser)
    (:name paredit :after (progn (after-paredit)))
    (:name sicp)
