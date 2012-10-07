@@ -1,5 +1,7 @@
 #-*- mode: sh -*-
 
+[[ -d ~/bin ]] && PATH=~/bin:${PATH}
+
 # linux
 
 if [ -f /proc/cpuinfo ]; then
