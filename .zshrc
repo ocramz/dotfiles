@@ -29,7 +29,6 @@ each() {
 
 # tmux
 
-alias tmux="nocorrect tmux"
 alias t="tmux attach || tmux"
 
 function ts() { tmux -S /tmp/$@ }
