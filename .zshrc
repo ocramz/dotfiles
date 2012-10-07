@@ -8,7 +8,7 @@
 [[ -d ~/.oh-my-zsh ]] \
     && export ZSH=~/.oh-my-zsh \
     && ZSH_THEME=arrow \
-    plugins=(lein knife ruby bundler python git git-flow github) \
+    plugins=(git) \
     source $ZSH/oh-my-zsh.sh
 
 # basics
