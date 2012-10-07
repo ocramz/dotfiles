@@ -55,6 +55,8 @@ function el() { ps aux | egrep "[Ee]macs" | egrep -v grep }
 alias git="nocorrect git"
 alias g=git
 
+export GIT_EDITOR=nano
+
 # screencasting
 
 screencast() {
