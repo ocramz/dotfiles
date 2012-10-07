@@ -93,9 +93,8 @@ eunit() {
 
 # python
 
-# FIXME oh-my-zsh prompt sucks
-#[[ -f ~/.python/bin/activate ]] \
-#    && source ~/.python/bin/activate
+export PYTHONPATH=$HOME/Library/Python/2.7/site-packages
+export VIRTUALENV_DISTRIBUTE=true
 
 # ruby
 
