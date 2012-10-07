@@ -13,6 +13,8 @@
 
 # basics
 
+export PAGER=less
+
 alias l="ls -la"
 
 each() {
