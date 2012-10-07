@@ -72,7 +72,7 @@ screencast() {
 # haskell
 
 [[ -d ~/.cabal/bin ]] \
-    && PATH=~/.cabal/bin:$PATH \
+    && PATH=cabal-dev/bin:~/.cabal/bin:$PATH \
 
 alias c=cabal-dev
 
