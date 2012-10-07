@@ -91,6 +91,11 @@ eunit() {
     done
 }
 
+# go
+
+export GOROOT=/usr/local/Library/LinkedKegs/go
+export GOPATH=$HOME:$GOROOT
+
 # python
 
 export PYTHONPATH=$HOME/Library/Python/2.7/site-packages
