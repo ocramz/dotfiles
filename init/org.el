@@ -32,11 +32,11 @@
       org-babel-load-languages '((ditaa . t) (dot . t) (ruby . t) (clojure . t)
                                  (python . t) (sh . t) (emacs-lisp . t))
       org-capture-templates '(("t" "Todo" entry
-                               (file "~/org/inbox.org")
+                               (file+headline "~/org/gtd.org" "Inbox")
                                "* TODO %?" CAPTURED %u))
       org-clock-idle-time 15
       org-completion-use-ido t
-      org-default-notes-file "~/org/inbox.org"
+      org-default-notes-file "~/org/gtd.org"
       org-directory "~/org"
       org-enable-priority-commands nil
       org-enforce-todo-checkbox-dependencies t
