@@ -1,18 +1,16 @@
 ;; org-mode
 
+(defun org-agenda-toggle-blocked ()
+  (interactive)
+  (setq org-agenda-dim-blocked-tasks
+        (if (eq org-agenda-dim-blocked-tasks 'invisible) t 'invisible)))
+
 (add-hook
  'org-mode-hook
  (lambda ()
-   (auto-revert-mode 1) ;; we may be editing org-mode in >1 editor
+   (auto-revert-mode 1)
    (local-set-key (kbd "C-c s") 'org-sort)
-   (local-set-key (kbd "C-c b") 'org-ido-switchb)
-   (local-set-key
-    (kbd "C-c v")
-    (lambda () ;; Toggle the visibility of blocked TODOs
-      (interactive)
-      (setq org-agenda-dim-blocked-tasks
-            (if (eq org-agenda-dim-blocked-tasks nil)
-                'invisible nil))))))
+   (local-set-key (kbd "C-c b") 'org-ido-switchb)))
 
 (setq-default org-agenda-custom-commands
       '(("vc" "View @COMPUTER" tags "+TODO=\"TODO\"+\@COMPUTER" nil)

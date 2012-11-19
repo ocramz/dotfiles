@@ -1,0 +1,1 @@
+(:name ac-ghc-mod :depends auto-complete)
