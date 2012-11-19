@@ -15,7 +15,6 @@
  (lambda ()
    (interactive)
    (delete-trailing-whitespace)
-   (untabify (point-min) (point-max))
    (indent-region (point-min) (point-max))))
 
 (global-set-key (kbd "C-c r") 'align-regexp)
