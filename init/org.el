@@ -86,7 +86,7 @@
                       ("@READ"     . ?r)
                       ("@SHOP"     . ?s)
                       ("@WORK"     . ?w))
-      org-todo-keywords '((sequence "PROJ(p)" "TODO(t)"
+      org-todo-keywords '((sequence "PROJ(p)" "TODO(t)" "WAIT(w@)"
                                     "|"
                                     "DONE(d)")
                           (sequence "|"
