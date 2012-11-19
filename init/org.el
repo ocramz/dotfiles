@@ -14,7 +14,7 @@
             (if (eq org-agenda-dim-blocked-tasks nil)
                 'invisible nil))))))
 
-(setq org-agenda-custom-commands
+(setq-default org-agenda-custom-commands
       '(("vc" "View @COMPUTER" tags "+TODO=\"TODO\"+\@COMPUTER" nil)
         ("ve" "View @ERRAND"   tags "+TODO=\"TODO\"+\@ERRAND"   nil)
         ("vp" "View @PHONE"    tags "+TODO=\"TODO\"+\@PHONE"    nil)
