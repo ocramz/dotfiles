@@ -43,6 +43,13 @@
       org-enforce-todo-dependencies t
       org-export-latex-tables-centered t
       org-hide-leading-stars t
+      org-log-done 'time
+      org-log-into-drawer t
+      org-log-redeadline 'time
+      org-log-refile 'time
+      org-log-repeat 'time
+      org-log-reschedule 'time
+      org-log-states-order-reversed nil
       org-mobile-directory "~/Dropbox/MobileOrg"
       org-mobile-inbox-for-pull "~/org/from-mobile.org"
       org-mobile-use-encryption t
