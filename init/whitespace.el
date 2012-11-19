@@ -1,9 +1,12 @@
 ;; whitespace - because it's evil
 
-(setq column-number-mode t
-      indicate-empty-lines t
-      truncate-lines t)
-(setq whitespace-action '(auto-cleanup)
-      whitespace-style '(face tabs trailing lines-tail indentation empty))
-(add-hook-to-modes code-modes 'whitespace-mode)
-(setq-default indent-tabs-mode nil)
+(setq-default
+ column-number-mode t
+ indicate-empty-lines t
+ truncate-lines t
+ indent-tabs-mode nil
+ tab-width 2
+ whitespace-action '(auto-cleanup)
+ whitespace-style '(empty face indentation lines-tail tabs trailing))
+
+;; (add-hook-to-modes code-modes 'whitespace-mode)
