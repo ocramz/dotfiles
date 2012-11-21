@@ -1,1 +1,5 @@
-(:name go-mode)
+(:name go-mode
+ :after
+ (progn
+   (add-to-list 'load-path "/usr/local/go/src/pkg/github.com/dougm/goflymake")
+   (require 'go-flymake)))
