@@ -1,4 +1,5 @@
 (setq lisp-modes '(clojure
+                   nrepl
                    emacs-lisp
                    scheme)
       code-modes (apply #'append
