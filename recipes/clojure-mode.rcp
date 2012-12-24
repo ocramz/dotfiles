@@ -1,1 +1,1 @@
-(:name clojure-mode :depends (paredit))
+(:name clojure-mode)
