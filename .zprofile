@@ -1,32 +1,51 @@
 #-*- mode: sh -*-
 
-[[ -d ~/bin ]] && PATH=~/bin:${PATH}
-
-# linux
-
-if [ -f /proc/cpuinfo ]; then
-
-    if [ -z $SSH_AGENT_PID ]; then
-        eval `ssh-agent` >/dev/null
-    fi
-
-    if [ -z $DBUS_SESSION_BUS_ADDRESS ]; then
-        eval `dbus-launch`; export DBUS_SESSION_BUS_ADDRESS
-    fi
-
+if [ -d ~/bin ]; then
+    PATH=${HOME}/bin:${PATH}
 fi
 
-# mac
+export EDITOR='emacs -nw'
+export GIT_EDITOR=nano
+export PAGER=less
 
-if [ -d /Applications ]; then
+# NIX
+if [ -f ~/.nix-profile/etc/profile.d/nix.sh ]; then
+    source ~/.nix-profile/etc/profile.d/nix.sh
+fi
 
-    export JAVA_HOME=$(/usr/libexec/java_home)
+# HASKELL
+if [ -d ${HOME}/.cabal/bin ]; then
+    PATH=${HOME}/.cabal/bin:${PATH}
+fi
 
-    find-tag() { each $1 openmeta -p $(eval 'pwd') -a $2 }
+# GO
+export GOROOT=/usr/local/go
 
-    show-all-files() {
-        defaults write com.apple.finder AppleShowAllFiles $1 ;# TRUE | FALSE
-        killall Finder
-    }
+# PYTHON
+export VIRTUALENV_DISTRIBUTE=true
 
+# RUBY
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+# OCAML
+which opam >/dev/null && eval `opam config -env`
+
+# MAC
+if [ -f /mach_kernel ]; then
+    # JAVA
+    export JAVA_HOME="$(/usr/libexec/java_home)"
+
+    # PYTHON
+    export PYTHONPATH=${HOME}/Library/Python/2.7/site-packages
+
+    # AWS
+    export AWS_AUTO_SCALING_HOME="/usr/local/Library/LinkedKegs/auto-scaling/jars"
+    export AWS_CLOUDFORMATION_HOME="/usr/local/Library/LinkedKegs/aws-cfn-tools/jars"
+    export AWS_CLOUDWATCH_HOME="/usr/local/Library/LinkedKegs/cloud-watch/jars"
+    export AWS_ELASTICACHE_HOME="/usr/local/Library/LinkedKegs/aws-elasticache/jars"
+    export AWS_IAM_HOME="/usr/local/Library/LinkedKegs/aws-iam-tools/jars"
+    export AWS_SNS_HOME="/usr/local/Library/LinkedKegs/aws-sns-cli/jars"
+    export CS_HOME="/usr/local/Library/LinkedKegs/aws-cloudsearch/jars"
+    export EC2_HOME="/usr/local/Library/LinkedKegs/ec2-api-tools/jars"
+    export SERVICE_HOME="$AWS_CLOUDWATCH_HOME"
 fi

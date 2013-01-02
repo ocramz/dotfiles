@@ -1,64 +1,53 @@
 #-*- mode: sh -*-
 
-# oh-my-zsh
-
-[[ ! -d ~/.oh-my-zsh ]] \
-    && git clone http://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+# OH-MY-ZSH
+if [ ! -d ${HOME}/.oh-my-zsh ]; then
+    git clone http://github.com/robbyrussell/oh-my-zsh.git ${HOME}/.oh-my-zsh
+fi
 
 [[ -d ~/.oh-my-zsh ]] \
     && export ZSH=~/.oh-my-zsh \
-    && ZSH_THEME=arrow \
-    plugins=(git) \
-    source $ZSH/oh-my-zsh.sh
+    && plugins=(git) source $ZSH/oh-my-zsh.sh
 
-# basics
-
-export PAGER=less
-
+# BASICS
 alias l="ls -la"
 
 each() {
-    find=$1 ; shift
-    for found in $(find $PWD -name $find); do
-        dir=$(dirname $found)
+    find=${1} ; shift
+    for found in $(find ${PWD} -name ${find}); do
+        dir=$(dirname ${found})
         pushd "${dir}" >/dev/null
-        echo $dir && $@
+        echo ${dir} && ${@}
         popd >/dev/null
     done
 }
 
-# tmux
-
-alias t="tmux attach || tmux"
-
-function ts() { tmux -S /tmp/$@ }
-function ta() { ts $1 attach }
-function tk() { ts $1 kill-session }
+# TMUX
+alias t="tmux -2 attach || tmux -2"
+function ts() { tmux -S /tmp/${@} }
+function ta() { ts ${1 }attach }
+function tk() { ts ${1} kill-session }
 function tl() { ps aux | grep tmux | egrep -v grep }
 
-# emacs
+# DVTM
+alias d='dvtm -m ^z'
 
-[[ -f /Applications/Emacs.app ]] \
-    && PATH=/Applications/Emacs.app/*/*/bin:$PATH
-
-alias emacsclient="nocorrect emacsclient"
-export EDITOR="emacsclient -t --alternate-editor=''"
-alias e=$EDITOR
-
-function ec() { e -s $@ }
-function es() { emacs --daemon=$1 && ec $@ }
-function ek() { ec $1 -e '(server-stop)' }
+# EMACS
+alias emacs=${EDITOR}
+alias e=${EDITOR}
+function ec() { e -s ${@} }
+function es() { emacs --daemon=${1} && ec ${@} }
+function ek() { ec ${1} -e '(server-stop)' }
 function el() { ps aux | egrep "[Ee]macs" | egrep -v grep }
 
-# git
+# JENKINS
+alias jenkins='java -jar /usr/local/Library/LinkedKegs/jenkins/libexec/jenkins.war'
 
+# GIT
 alias git="nocorrect git"
 alias g=git
 
-export GIT_EDITOR=nano
-
-# screencasting
-
+# SCREENCASTING
 screencast() {
     cvlc screen:// \
         --screen-fps=12 \
@@ -69,49 +58,24 @@ screencast() {
 "
 }
 
-# haskell
-
-[[ -d ~/.cabal/bin ]] \
-    && PATH=cabal-dev/bin:~/.cabal/bin:$PATH \
-
+# HASKELL
 alias c=cabal-dev
 
-# erlang
-
+# ERLANG
 alias rebar="nocorrect rebar"
 alias r="rebar skip_deps=true"
-
-export ERL_LIBS=~/src/proper
-
+export ERL_LIBS=${HOME}/src/proper
 eunit() {
-    while inotifywait -e modify -r $PWD/src $PWD/test $PWD/include; do
+    while inotifywait -e modify -r ${PWD}/src ${PWD}/test ${PWD}/include; do
         echo "\n\nRun: $(date)"
         r compile && r eunit
         echo "End: $(date)\n\n"
     done
 }
 
-# go
-
-export GOROOT=/usr/local/Library/LinkedKegs/go
-export GOPATH=$HOME:$GOROOT
-
-# python
-
-export PYTHONPATH=$HOME/Library/Python/2.7/site-packages
-export VIRTUALENV_DISTRIBUTE=true
-
-# ruby
-
-[[ -d ~/.gem/ruby/1.9.1/bin ]] && PATH=~/.gem/ruby/1.9.1/bin:$PATH
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
-# chef
-
-# TODO is there knife plugin stuff for this in oh-my-zsh?
+# CHEF
 alias knife="nocorrect knife"
 alias k="nocorrect bundle exec knife"
-
 kup() {
     knife cookbook upload --all
     for role in roles/*; do
@@ -125,18 +89,11 @@ kup() {
     done
 }
 
-# vagrant
-
+# VAGRANT
 alias v="noglob bundle exec vagrant"
 
-# s3cmd
-
-alias s3cmd="nocorrect s3cmd"
-
-# nix
-
-[[ -f /usr/local/etc/profile.d/nix.sh ]] \
-    && source /usr/local/etc/profile.d/nix.sh
+# S3CMD
+alias s3="nocorrect s3cmd"
 
 ############################################################################
 # Provide higer-order functions
