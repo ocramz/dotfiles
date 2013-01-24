@@ -1,0 +1,4 @@
+(:name arduino-mode
+       :description "Emacs major mode for editing Arduino sketches"
+       :type github
+       :pkgname "bookest/arduino-mode")
