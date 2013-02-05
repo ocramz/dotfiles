@@ -1,3 +1,1 @@
-(:name org-mode
-       ;; FIXME move settings from init-org.el
-       )
+(:name org-mode :branch "release_7.9.2")
