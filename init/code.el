@@ -11,12 +11,12 @@
                                 sh
                                 vhdl))))
 
-(global-set-key
- (kbd "C-c n")
- (lambda ()
-   (interactive)
-   (delete-trailing-whitespace)
-   (indent-region (point-min) (point-max))))
+(defun cleanup-buffer ()
+  (interactive)
+  (delete-trailing-whitespace)
+  (indent-region (point-min) (point-max)))
+
+(global-set-key (kbd "C-c n") 'cleanup-buffer)
 
 (global-set-key (kbd "C-c r") 'align-regexp)
 
