@@ -1,5 +1,5 @@
 (:name ghc-mod
-       :depends (haskell-mode haskell-mode-exts)
+       :depends (auto-complete haskell-mode haskell-mode-exts)
        :after (progn
                 ;; ghc-mod
                 (autoload 'ghc-init "ghc" nil t)
