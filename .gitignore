@@ -2,14 +2,15 @@
 /ac-comphist.dat
 /auto-save-list
 /backup
+/bookmarks
 /broken
 /custom.el
 /el-get
+/elpa/archives/gnu/archive-contents
 /eshell
 /org-archive
 /semanticdb
 /srecode-map.el
 /swank
 /tramp
-/bookmarks
-/elpa/archives/gnu/archive-contents
+/var/pcache/gh/gh-gist-api
