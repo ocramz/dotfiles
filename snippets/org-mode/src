@@ -1,6 +1,6 @@
-# name: #+BEGIN_SRC [ ... ] #+END_SRC
+# name: #+begin_src [ ... ] #+end_src
 # key: src
 # --
-#+BEGIN_SRC $1
+#+begin_src $1
   $2
-#+END_SRC
+#+end_src
