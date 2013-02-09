@@ -3,8 +3,6 @@
        :after
        (progn
 
-         (message "org-mode")
-
          (defun org-agenda-toggle-blocked ()
            (interactive)
            (setq org-agenda-dim-blocked-tasks
@@ -95,5 +93,7 @@
           org-todo-repeat-to-state "TODO"
           org-use-sub-superscripts '{})
 
+         (message "org-mode org-directory %s" org-directory)
+                  
          (define-key global-map (kbd "C-c a") 'org-agenda)
          (define-key global-map (kbd "C-c c") 'org-capture)))
