@@ -1,1 +1,5 @@
-(:name haskell-mode :features haskell-mode)
+(:name haskell-mode
+       :after (progn
+                (setq-default haskell-process-type 'cabal-dev)
+                (add-hook 'haskell-mode-hook 'capitalized-words-mode)
+                (add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan)))
