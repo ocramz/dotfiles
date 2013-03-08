@@ -1,1 +1,1 @@
-(:name auto-complete-yasnippet :requires (auto-complete yasnippet))
+(:name auto-complete-yasnippet)

@@ -1,1 +1,1 @@
-(:name ac-nrepl :depends (auto-complete nrepl))
+(:name ac-nrepl)
