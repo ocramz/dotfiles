@@ -5,4 +5,4 @@ set show-refs = yes
 set show-line-numbers = yes
 set line-number-interval = 5
 set tab-size = 2
-set commit-encoding = "UTF-8"
+# set commit-encoding = "UTF-8"
