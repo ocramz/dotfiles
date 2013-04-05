@@ -26,7 +26,7 @@ URxvt.scrollBar:          false
 URxvt.scrollStyle:        rxvt
 Xft.antialias:            true
 Xft.autohint:             true
-Xft.dpi:                  128
+Xft.dpi:                  96
 Xft.embolden:             true
 Xft.hinting:              true
 Xft.hintstyle:            hintslight
