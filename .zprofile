@@ -1,51 +1,48 @@
 #-*- mode: sh -*-
 
-if [ -d ~/bin ]; then
-    PATH=${HOME}/bin:${PATH}
-fi
+# DEFAULTS
+[ -d /etc/profile.d ] && for i in /etc/profile.d/*.sh; do
+  . $i
+done
 
+# EMACS
 export EDITOR='emacs -nw'
-export GIT_EDITOR=nano
-export PAGER=less
 
-# NIX
-if [ -f ~/.nix-profile/etc/profile.d/nix.sh ]; then
-    source ~/.nix-profile/etc/profile.d/nix.sh
-fi
+# GIT
+export GIT_EDITOR=nano
 
 # HASKELL
-if [ -d ${HOME}/.cabal/bin ]; then
-    PATH=${HOME}/.cabal/bin:${PATH}
+PATH=~/.cabal/bin:$PATH
+
+# JAVA
+if [ -f /mach_kernel ]; then # MAC
+    export JAVA_HOME="$(/usr/libexec/java_home)"
+fi
+export MAVEN_OPTS="-Xmx512m -XX:MaxPermSize=128m"
+
+# PYTHON
+export VIRTUALENV_DISTRIBUTE=true
+if [ -f /mach_kernel ]; then # MAC
+    export PYTHONPATH=~/Library/Python/2.7/site-packages
+    cat >~/.pydistutils.cfg <<\EOF
+[install]
+install_lib = ~/Library/Python/$py_version_short/site-packages
+install_scripts = ~/bin
+EOF
+else
+    export PYTHONPATH=~/lib/python/2.7/site-packages
+    cat >~/.pydistutils.cfg <<\EOF
+[install]
+install_lib = ~/lib/python/$py_version_short/site-packages
+install_scripts = ~/bin
+EOF
 fi
 
 # GO
 export GOROOT=/usr/local/go
 
-# PYTHON
-export VIRTUALENV_DISTRIBUTE=true
-
-# RUBY
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
 # OCAML
 which opam >/dev/null && eval `opam config -env`
 
-# MAC
-if [ -f /mach_kernel ]; then
-    # JAVA
-    export JAVA_HOME="$(/usr/libexec/java_home)"
-
-    # PYTHON
-    export PYTHONPATH=${HOME}/Library/Python/2.7/site-packages
-
-    # AWS
-    export AWS_AUTO_SCALING_HOME="/usr/local/Library/LinkedKegs/auto-scaling/jars"
-    export AWS_CLOUDFORMATION_HOME="/usr/local/Library/LinkedKegs/aws-cfn-tools/jars"
-    export AWS_CLOUDWATCH_HOME="/usr/local/Library/LinkedKegs/cloud-watch/jars"
-    export AWS_ELASTICACHE_HOME="/usr/local/Library/LinkedKegs/aws-elasticache/jars"
-    export AWS_IAM_HOME="/usr/local/Library/LinkedKegs/aws-iam-tools/jars"
-    export AWS_SNS_HOME="/usr/local/Library/LinkedKegs/aws-sns-cli/jars"
-    export CS_HOME="/usr/local/Library/LinkedKegs/aws-cloudsearch/jars"
-    export EC2_HOME="/usr/local/Library/LinkedKegs/ec2-api-tools/jars"
-    export SERVICE_HOME="$AWS_CLOUDWATCH_HOME"
-fi
+# ~
+PATH=~/bin:$PATH
