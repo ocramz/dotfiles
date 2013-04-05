@@ -10,9 +10,9 @@
         p = pull
         s = status -s
         t = tag -a -m
-	autocommit = git commit -a -m $(date -u +%Y%m%d)
-	release = TAG=$(date -u +%Y%m%d) && git t $TAG $TAG
-	headless = git symbolic-ref HEAD refs/heads/$1 && rm .git/index && git clean -fdx
+        autocommit = sh git commit -a -m $(date -u +%Y%m%d)
+        headless = !sh git symbolic-ref HEAD refs/heads/$1 && rm .git/index && git clean -fdx
+        release = sh TAG=$(date -u +%Y%m%d) && git t $TAG $TAG
 [color]
         branch = auto
         diff = auto
@@ -30,7 +30,11 @@
 [push]
         default = tracking
 [rerere]
-	enabled = 1
+        enabled = 1
 [user]
         email = tim@dysinger.net
         name = Tim Dysinger
+[branch]
+        autosetuprebase = always
+[github]
+        user = dysinger
