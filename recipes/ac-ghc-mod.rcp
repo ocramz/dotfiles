@@ -5,8 +5,8 @@
        :after (add-hook 'haskell-mode-hook
                         (lambda ()
                           (mapc (lambda (x) (add-to-list 'ac-sources x))
-                                (ac-source-ghc-module
-                                 ac-source-ghc-symbol
-                                 ac-source-ghc-pragmas
-                                 ac-source-ghc-langexts))
+                                '(ac-source-ghc-module
+                                  ac-source-ghc-symbol
+                                  ac-source-ghc-pragmas
+                                  ac-source-ghc-langexts))
                           (auto-complete-mode t))))

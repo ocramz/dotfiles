@@ -1,1 +1,7 @@
-(:name js2-mode :after (progn (setq js2-basic-offset 2)))
+(:name js2-mode
+       :after (progn
+                (setq auto-mode-alist
+                      (cons '("\\.json$" . js2-mode) auto-mode-alist))
+                (setq auto-mode-alist
+                      (cons '("\\.template$" . js2-mode) auto-mode-alist))
+                (setq js2-basic-offset 4)))
