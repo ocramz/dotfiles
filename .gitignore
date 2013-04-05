@@ -1,2 +1,4 @@
 *~
 .DS_Store
+/.ssh/*.pem
+/.ssh/*_rsa
