@@ -18,9 +18,6 @@ export GIT_EDITOR=nano
 PATH=~/.cabal/bin:$PATH
 
 # JAVA
-if [ -f /mach_kernel ]; then # MAC
-    export JAVA_HOME="$(/usr/libexec/java_home)"
-fi
 export MAVEN_OPTS="-Xmx512m -XX:MaxPermSize=128m"
 
 # PYTHON
