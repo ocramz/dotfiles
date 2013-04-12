@@ -5,6 +5,9 @@
     . $i
 done
 
+# NIX
+export LD_RUN_PATH=~/.nix-profile/lib:~/.nix-profile/lib64
+
 # EMACS
 export EDITOR='emacs -nw'
 
