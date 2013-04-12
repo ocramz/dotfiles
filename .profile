@@ -25,6 +25,9 @@ PATH=~/.local/bin:$PATH
 export WORKON_HOME=/opt/virtualenvs ;# WORKON_HOME=$HOME/.virtualenvs
 [ -f ~/.local/bin/virtualenvwrapper.sh ] && . ~/.local/bin/virtualenvwrapper.sh
 
+# RUBY
+which rbenv >/dev/null && eval "$(rbenv init -)"
+
 # GO
 export GOROOT=/usr/local/go
 
