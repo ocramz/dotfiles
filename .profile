@@ -33,7 +33,7 @@ which rbenv >/dev/null && eval "$(rbenv init -)"
 # PATH=$GOROOT/bin:$PATH
 
 # OCAML
-which opam >/dev/null && eval `opam config -env`
+# which opam >/dev/null && eval "$(opam config -env)"
 
 # ~
 PATH=~/bin:$PATH
