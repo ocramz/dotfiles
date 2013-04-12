@@ -29,7 +29,8 @@ export WORKON_HOME=/opt/virtualenvs ;# WORKON_HOME=$HOME/.virtualenvs
 which rbenv >/dev/null && eval "$(rbenv init -)"
 
 # GO
-export GOROOT=/usr/local/go
+# export GOROOT=~/go
+# PATH=$GOROOT/bin:$PATH
 
 # OCAML
 which opam >/dev/null && eval `opam config -env`
