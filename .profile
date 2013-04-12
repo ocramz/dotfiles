@@ -2,7 +2,7 @@
 
 # DEFAULTS
 [ -d /etc/profile.d ] && for i in /etc/profile.d/*.sh; do
-  . $i
+    . $i
 done
 
 # EMACS
