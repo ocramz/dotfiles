@@ -27,7 +27,7 @@ PATH=~/.cabal/bin:$PATH
 
 # JAVA
 if [ -f /mach_kernel ]; then # MAC
-    export JAVA_HOME="$(/usr/libexec/java_home)"
+    export JAVA_HOME="$(/usr/libexec/java_home -v 1.7+)"
 fi
 export MAVEN_OPTS="-Xmx512m -XX:MaxPermSize=128m"
 
