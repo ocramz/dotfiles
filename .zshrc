@@ -43,6 +43,12 @@ alias b=bundle
 # CHEF
 alias knife='nocorrect knife'
 alias k=knife
+chef-search() {
+    knife exec -E "print nodes.find('$1').collect {|n| n.ec2.public_hostname}.join ' '"
+}
+chef-ssh() {
+    query=$1; shift; pssh -l tim -H "$(chef-search $query)" $@
+}
 
 # VAGRANT
 alias v=vagrant
