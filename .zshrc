@@ -7,7 +7,8 @@ fi
 
 [[ -d ~/.oh-my-zsh ]] \
     && export ZSH=~/.oh-my-zsh \
-    && plugins=(git) source $ZSH/oh-my-zsh.sh
+    && plugins=(git rbenv bundler virtualenvwrapper) \
+    source $ZSH/oh-my-zsh.sh
 
 # TMUX
 alias t='tmux -2 attach || tmux -2'
