@@ -6,15 +6,15 @@
 done
 
 # NIX
-export C_INCLUDE_PATH=\
-~/.nix-profile/include:\
-/usr/include:\
-/usr/local/include
-export LD_RUN_PATH=\
-~/.nix-profile/lib:~/.nix-profile/lib64:\
-/lib:/lib64:/lib/x86_64-linux-gnu:\
-/usr/lib:/usr/lib/x86_64-linux-gnu:\
-/usr/local/lib
+# export C_INCLUDE_PATH=\
+# ~/.nix-profile/include:\
+# /usr/include:\
+# /usr/local/include
+# export LD_RUN_PATH=\
+# ~/.nix-profile/lib:~/.nix-profile/lib64:\
+# /lib:/lib64:/lib/x86_64-linux-gnu:\
+# /usr/lib:/usr/lib/x86_64-linux-gnu:\
+# /usr/local/lib
 
 # EMACS
 export EDITOR='emacs -nw'
