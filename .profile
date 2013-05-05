@@ -15,6 +15,7 @@ done
 # /lib:/lib64:/lib/x86_64-linux-gnu:\
 # /usr/lib:/usr/lib/x86_64-linux-gnu:\
 # /usr/local/lib
+export NIX_GHC_LIBDIR="$HOME/.nix-profile/lib"
 
 # EMACS
 export EDITOR='emacs -nw'
