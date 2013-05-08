@@ -6,15 +6,12 @@
 done
 
 # NIX
-# export C_INCLUDE_PATH=\
-# ~/.nix-profile/include:\
-# /usr/include:\
-# /usr/local/include
-# export LD_RUN_PATH=\
-# ~/.nix-profile/lib:~/.nix-profile/lib64:\
-# /lib:/lib64:/lib/x86_64-linux-gnu:\
-# /usr/lib:/usr/lib/x86_64-linux-gnu:\
-# /usr/local/lib
+# export ACLOCAL_PATH=/Users/tim/.nix-profile/share/aclocal
+# export PKG_CONFIG_PATH=/Users/tim/.nix-profile/lib/pkgconfig
+# export C_INCLUDE_PATH=~/.nix-profile/include\
+# :/usr/include:/usr/local/include
+# export LD_RUN_PATH=~/.nix-profile/lib:~/.nix-profile/lib64\
+# :/lib:/lib64:/lib/x86_64-linux-gnu:/usr/lib:/usr/lib/x86_64-linux-gnu:/usr/local/lib
 export NIX_GHC_LIBDIR="$HOME/.nix-profile/lib"
 
 # EMACS
