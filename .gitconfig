@@ -1,40 +1,44 @@
+# -*- mode:conf; -*-
+# Local Variables:
+# indent-tabs-mode: t
+# tab-width: 4
+# End:
+
 [apply]
-        whitespace = strip
+	whitespace = strip
 [alias]
-        b = branch
-        c = checkout
-        d = diff --word-diff
-        f = fetch
-        l = log --oneline --decorate
-        m = merge
-        p = pull
-        s = status -s
-        t = tag -a -m
-        autocommit = sh git commit -a -m $(date -u +%Y%m%d)
-        headless = !sh git symbolic-ref HEAD refs/heads/$1 && rm .git/index && git clean -fdx
-        release = sh TAG=$(date -u +%Y%m%d) && git t $TAG $TAG
+	b = branch
+	c = checkout
+	d = diff --word-diff
+	f = fetch
+	l = log --oneline --decorate
+	m = merge
+	p = pull
+	s = status -s
+	t = tag -a -m
+	autocommit = sh git commit -a -m $(date -u +%Y%m%d)
+	headless = !sh git symbolic-ref HEAD refs/heads/$1 && rm .git/index && git clean -fdx
+	release = sh TAG=$(date -u +%Y%m%d) && git t $TAG $TAG
 [color]
-        branch = auto
-        diff = auto
-        interactive = auto
-        status = auto
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto
 [core]
-        excludesfile = ~/.gitignore
-        quotepath = false
+	excludesfile = ~/.gitignore
+	quotepath = false
 [diff]
-        rename = copy
+	rename = copy
 [help]
-        autocorrect = 5
+	autocorrect = 5
 [merge]
-        summary = true
+	summary = true
 [push]
-        default = tracking
+	default = tracking
 [rerere]
-        enabled = 1
+	enabled = 1
 [user]
-        email = tim@dysinger.net
-        name = Tim Dysinger
+	email = tim@dysinger.net
+	name = Tim Dysinger
 [branch]
-        autosetuprebase = always
-[github]
-        user = dysinger
+	autosetuprebase = always
