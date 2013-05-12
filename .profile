@@ -31,7 +31,7 @@ export MAVEN_OPTS="-Xmx512m -XX:MaxPermSize=128m"
 # PYTHON
 [ -d ~/.local/bin ]             && PATH=~/.local/bin:$PATH
 [ -d ~/Library/Python/2.7/bin ] && PATH=~/Library/Python/2.7/bin:$PATH
-export WORKON_HOME=$HOME/.virtualenvs
+export WORKON_HOME=~/.virtualenvs
 which virtualenvwrapper.sh >/dev/null && . $(which virtualenvwrapper.sh)
 
 # RUBY
