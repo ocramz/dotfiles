@@ -38,12 +38,5 @@ which virtualenvwrapper.sh >/dev/null && . $(which virtualenvwrapper.sh)
 # RUBY
 which rbenv >/dev/null && eval "$(rbenv init -)"
 
-# GO
-# export GOROOT=~/go
-# PATH=$GOROOT/bin:$PATH
-
-# OCAML
-# which opam >/dev/null && eval "$(opam config -env)"
-
 # ~
 PATH=~/bin:$PATH
