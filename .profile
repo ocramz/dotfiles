@@ -6,14 +6,12 @@
 done
 
 # NIX
-# export ACLOCAL_PATH=/Users/tim/.nix-profile/share/aclocal
-# export PKG_CONFIG_PATH=/Users/tim/.nix-profile/lib/pkgconfig
-# export C_INCLUDE_PATH=~/.nix-profile/include\
-# :/usr/include:/usr/local/include
-# export LD_RUN_PATH=~/.nix-profile/lib:~/.nix-profile/lib64\
-# :/lib:/lib64:/lib/x86_64-linux-gnu:/usr/lib:/usr/lib/x86_64-linux-gnu:/usr/local/lib
-export MANPATH=~/.nix-profile/share/man:/usr/share/man
-export NIX_GHC_LIBDIR="$HOME/.nix-profile/lib"
+export    ACLOCAL_PATH=~/.nix-profile/share/aclocal:$ACLOCAL_PATH
+export PKG_CONFIG_PATH=~/.nix-profile/lib/pkgconfig:$PKG_CONFIG_PATH
+export  C_INCLUDE_PATH=~/.nix-profile/include:$C_INCLUDE_PATH               #:/usr/include:/usr/local/include
+export     LD_RUN_PATH=~/.nix-profile/lib:~/.nix-profile/lib64:$LD_RUN_PATH #:/lib:/lib64:/lib/x86_64-linux-gnu:/usr/lib:/usr/lib/x86_64-linux-gnu:/usr/local/lib
+export         MANPATH=~/.nix-profile/share/man:$MANPATH
+export  NIX_GHC_LIBDIR=~/.nix-profile/lib
 
 # EMACS
 export EDITOR='emacs -nw'
