@@ -12,6 +12,7 @@ done
 # :/usr/include:/usr/local/include
 # export LD_RUN_PATH=~/.nix-profile/lib:~/.nix-profile/lib64\
 # :/lib:/lib64:/lib/x86_64-linux-gnu:/usr/lib:/usr/lib/x86_64-linux-gnu:/usr/local/lib
+export MANPATH=~/.nix-profile/share/man:/usr/share/man
 export NIX_GHC_LIBDIR="$HOME/.nix-profile/lib"
 
 # EMACS
