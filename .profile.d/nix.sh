@@ -1,6 +1,6 @@
 #-*- mode: sh -*-
 
-if [ -f ~/.nix-profile ]; then
+if [ -e ~/.nix-profile ]; then
     # export ACLOCAL_PATH=~/.nix-profile/share/aclocal:$ACLOCAL_PATH
     # export PKG_CONFIG_PATH=~/.nix-profile/lib/pkgconfig:$PKG_CONFIG_PATH
     # export C_INCLUDE_PATH=~/.nix-profile/include:$C_INCLUDE_PATH 
