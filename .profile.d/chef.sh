@@ -9,4 +9,4 @@ function chef-ssh {
 }
 
 alias knife='nocorrect knife'
-alias k=knife
+# alias k=knife
