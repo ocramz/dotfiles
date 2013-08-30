@@ -1,4 +1,5 @@
 (:name haskell-mode
+       :branch "v13.07"
        :after (progn
                 (setq-default haskell-process-type 'cabal-dev)
                 (add-hook 'haskell-mode-hook 'capitalized-words-mode)
