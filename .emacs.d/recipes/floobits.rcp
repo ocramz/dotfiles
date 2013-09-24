@@ -1,0 +1,13 @@
+(:name floobits
+       :description "Magit plugin for dealing with GitHub pull requests"
+       :type github
+       :pkgname "Floobits/floobits-emacs"
+       :after
+       (progn
+         (when (eq system-type 'darwin)
+           (require 'ls-lisp)
+           (setq ls-lisp-use-insert-directory-program nil))))
+
+;; (setq python "~/bin/python"
+;;       floobits-python-path "~/.emacs.d/xxxxxx/floobits.py"
+;;       floobits-python-agent (start-process "" "*Floobits*" ython floobits-python-path))
