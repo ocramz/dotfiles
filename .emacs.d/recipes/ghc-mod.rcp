@@ -1,5 +1,5 @@
 (:name ghc-mod
-       :branch "v2.0.3"
+       :branch "v3.0.2"
        :after (progn
                 (autoload 'ghc-init "ghc" nil t)
                 (add-hook 'haskell-mode-hook 'ghc-init)))
