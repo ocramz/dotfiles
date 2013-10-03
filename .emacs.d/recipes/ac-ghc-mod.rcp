@@ -2,11 +2,20 @@
        :depends (auto-complete ghc-mod)
        :features ac-ghc-mod
        :type emacswiki
-       :after (add-hook 'haskell-mode-hook
-                        (lambda ()
-                          (mapc (lambda (x) (add-to-list 'ac-sources x))
-                                '(ac-source-ghc-module
-                                  ac-source-ghc-symbol
-                                  ac-source-ghc-pragmas
-                                  ac-source-ghc-langexts))
-                          (auto-complete-mode t))))
+       :after-init
+       (progn
+         (ac-define-source
+             ghc-mod
+           '((depends ghc)
+             (candidates . (ghc-select-completion-symbol))
+             (symbol . "s")
+             (document . haskell-doc-sym-doc)
+             (cache)
+             (ac-config-default)))
+         (setq ac-sources
+               (list 'ac-source-ghc-mod
+                     'ac-source-words-in-same-mode-buffers
+                     'ac-source-ghc-module
+                     'ac-source-ghc-symbol
+                     'ac-source-ghc-pragmas
+                     'ac-source-ghc-langexts))))

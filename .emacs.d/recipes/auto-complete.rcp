@@ -1,1 +1,5 @@
-(:name auto-complete)
+(:name auto-complete
+       :post-init
+       (progn
+         (require 'auto-complete-config)
+         (ac-config-default)))
