@@ -7,6 +7,3 @@ function chef-search {
 function chef-ssh {
     query=$1; shift; pssh -l tim -H "$(chef-search $query)" $@
 }
-
-alias knife='nocorrect knife'
-# alias k=knife

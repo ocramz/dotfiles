@@ -1,5 +1,7 @@
 #-*- mode: sh -*-
 
-export WORKON_HOME=~/.virtualenvs
+export WORKON_HOME=/opt/virtualenvs
+export PIP_VIRTUALENV_BASE=$WORKON_HOME
+export PIP_RESPECT_VIRTUALENV=true
 
-which virtualenvwrapper.sh >/dev/null && . $(which virtualenvwrapper.sh)
+source /usr/local/bin/virtualenvwrapper.sh
