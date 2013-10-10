@@ -17,7 +17,3 @@ if [ -e $HOME/.profile.d ]; then
     done
     unset i
 fi
-
-if [ -e "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
-fi

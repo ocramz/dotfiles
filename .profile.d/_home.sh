@@ -1,4 +1,3 @@
 #-*- mode: sh -*-
 
-[ -d ~/.local/bin ] && PATH=~/.local/bin:$PATH
-[ -d ~/bin ]        && PATH=~/bin:$PATH
+PATH=$HOME/bin:$HOME/.local/bin:$PATH
