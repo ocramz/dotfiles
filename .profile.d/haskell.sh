@@ -1,3 +1,3 @@
 #-*- mode: sh -*-
 
-[ -d ~/.cabal/bin ] && PATH=~/.cabal/bin:$PATH
+PATH="$HOME/.cabal/bin":$PATH
