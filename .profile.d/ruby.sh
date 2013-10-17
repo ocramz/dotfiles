@@ -3,4 +3,6 @@
 export GEM_HOME=$HOME/.gems
 export GEM_PATH=$GEM_HOME
 
+alias be='bundle exec'
+
 PATH="$GEM_HOME/bin":$PATH
