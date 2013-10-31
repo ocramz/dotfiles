@@ -104,25 +104,26 @@ import           XMonad.Util.Replace
 main :: IO ()
 main =
   replace >>
-  xmonad conf { modMask    = modm
-           -- , terminal   = "urxvt"
-              , layoutHook = myLayoutHook conf
-              , manageHook = myManageHook <+> manageHook conf
-              , keys       = myKeys <+> keys conf
+  xmonad conf { modMask            = modm
+           -- , terminal           = "urxvt"
+              , keys               = myKeys <+> keys conf
+              , layoutHook         = myLayoutHook conf
+              , manageHook         = myManageHook <+> manageHook conf
+              , focusedBorderColor = "white"
               }
   where
     conf = gnomeConfig
     modm = mod4Mask
     myLayoutHook conf' =
-   -- onWorkspace "9" (withIM (1%7) (Title "tim.dysinger - Skype™") (Tall 1 0.5 0.5)) $
-   -- showWName $
-   -- noFrillsDeco shrinkText defaultTheme $
-      minimize $
       maximize $
-   -- magnifier $
-   -- spacing 2 $
-      mouseResizableTile
-      ||| layoutHook conf'
+      minimize $
+   -- magnifier $                                                                       
+   -- onWorkspace "9" (withIM (1%7) (Title "tim.dysinger - Skype™") (Tall 1 0.5 0.5)) $ 
+   -- noFrillsDeco shrinkText defaultTheme $                                            
+   -- showWName $                                                                       
+   -- spacing 2 $                                                                       
+      layoutHook conf'
+      ||| mouseResizableTile
       ||| Accordion
       ||| Circle
       ||| Column 1.6
@@ -197,7 +198,8 @@ main =
     myXPConfig =
       config' { autoComplete = Just 1
            -- , font         = myFont
-              , position     = Bottom }
+              , position     = Bottom
+              }
       where
         config' = defaultXPConfig
      -- myFont = "xft:Inconsolata:bold:size=11:antialias=true:hinting=light"
