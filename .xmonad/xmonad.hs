@@ -5,6 +5,7 @@ import qualified Data.Map                               as DM
 import           Data.Ratio                             ((%))
 import           XMonad
 import           XMonad.Actions.CycleWS
+import           XMonad.Actions.NoBorders
 import           XMonad.Actions.PhysicalScreens
 import           XMonad.Actions.WithAll
 import           XMonad.Config.Gnome
@@ -117,37 +118,38 @@ main =
     myLayoutHook conf' =
       maximize $
       minimize $
+      noBorders $
    -- magnifier $                                                                       
-   -- onWorkspace "9" (withIM (1%7) (Title "tim.dysinger - Skype™") (Tall 1 0.5 0.5)) $ 
    -- noFrillsDeco shrinkText defaultTheme $                                            
+   -- onWorkspace "9" (withIM (1%7) (Title "tim.dysinger - Skype™") (Tall 1 0.5 0.5)) $ 
    -- showWName $                                                                       
    -- spacing 2 $                                                                       
-      layoutHook conf'
-      ||| mouseResizableTile
-      ||| Accordion
-      ||| Circle
-      ||| Column 1.6
-      ||| Dishes 2 (1/6)
-      ||| FixedColumn 1 20 80 10
-      ||| Grid
-      ||| GridRatio (4/3)
-      ||| MosaicAlt DM.empty
-      ||| ResizableTall 1 (3/100) (1/2) []
-      ||| Roledex
-      ||| Simplest
-      ||| SplitGrid L 2 3 (2/3) (16/10) (5/100)
-      ||| ThreeCol 1 (3/100) (1/2)
-      ||| TwoPane (3/100) (1/2)
-      ||| autoMaster 1 (1/100) Grid
-      ||| centerMaster Grid
-      ||| dragPane Horizontal 0.1 0.5
-      ||| mosaic 2 [3,2]
-      ||| multiCol [1] 4 0.01 0.5
-      ||| reflectHoriz (Tall 1 (3/100) (1/2))
-      ||| simpleCross
-      ||| simpleDrawer 0.01 0.3 (ClassName "Rhythmbox") `onTop` (Tall 1 0.03 0.5)
-      ||| simpleFloat
-      ||| spiral (6/7)
+      mouseResizableTile { draggerType = BordersDragger }
+      ||| layoutHook conf'
+      -- ||| Accordion
+      -- ||| Circle
+      -- ||| Column 1.6
+      -- ||| Dishes 2 (1/6)
+      -- ||| FixedColumn 1 20 80 10
+      -- ||| Grid
+      -- ||| GridRatio (4/3)
+      -- ||| MosaicAlt DM.empty
+      -- ||| ResizableTall 1 (3/100) (1/2) []
+      -- ||| Roledex
+      -- ||| Simplest
+      -- ||| SplitGrid L 2 3 (2/3) (16/10) (5/100)
+      -- ||| ThreeCol 1 (3/100) (1/2)
+      -- ||| TwoPane (3/100) (1/2)
+      -- ||| autoMaster 1 (1/100) Grid
+      -- ||| centerMaster Grid
+      -- ||| dragPane Horizontal 0.1 0.5
+      -- ||| mosaic 2 [3,2]
+      -- ||| multiCol [1] 4 0.01 0.5
+      -- ||| reflectHoriz (Tall 1 (3/100) (1/2))
+      -- ||| simpleCross
+      -- ||| simpleDrawer 0.01 0.3 (ClassName "Rhythmbox") `onTop` (Tall 1 0.03 0.5)
+      -- ||| simpleFloat
+      -- ||| spiral (6/7)
     myManageHook =
       composeAll [ className =? "Dia"      --> doFloat
                  , className =? "Gimp-2.6" --> doFloat
@@ -158,6 +160,7 @@ main =
     myKeys _conf@(XConfig { XMonad.modMask = modm'}) =
       DM.fromList $
       [ ((modm', xK_z), toggleWS)
+      , ((modm', xK_g ), withFocused toggleBorder)
       , ((modm', xK_backslash), withFocused (sendMessage . maximizeRestore))
    -- , ((modm',               xK_m     ), withFocused minimizeWindow)
    -- , ((modm' .|. shiftMask, xK_m     ), sendMessage RestoreNextMinimizedWin)
