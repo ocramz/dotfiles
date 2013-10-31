@@ -3,4 +3,5 @@
        :after (progn
                 (setq-default haskell-process-type 'cabal-dev)
                 (add-hook 'haskell-mode-hook 'capitalized-words-mode)
+                (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
                 (add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan)))
