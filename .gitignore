@@ -1,3 +1,4 @@
+*.elc
 *.lock
 *~
 .DS_Store
@@ -9,6 +10,7 @@
 /.cache
 /.chef
 /.cups
+/.emacs.d/el-get-*
 /.floorc
 /.fontconfig
 /.githooks/commit-msg
@@ -17,7 +19,7 @@
 /.gnupg/pubring.gpg
 /.gnupg/random_seed
 /.gnupg/secring.gpg
-/.gnupg/tim-voxer-rovoke.cert
+/.gnupg/*-rovoke.cert
 /.gnupg/trustdb.gpg
 /.ido.last
 /.irb_history
@@ -43,6 +45,7 @@
 /.subversion/auth
 /.subversion/config
 /.subversion/servers
+/.thumbnails
 /.tilemill/config.json
 /.tor
 /.zcompdump
