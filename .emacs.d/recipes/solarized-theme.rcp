@@ -1,1 +1,0 @@
-(:name solarized-theme :after-init  (load-theme 'solarized-dark t))

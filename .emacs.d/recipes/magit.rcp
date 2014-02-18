@@ -1,9 +1,0 @@
-(:name magit
-       :branch "1.2.0"
-       :after (progn
-                (global-set-key (kbd "C-x g") 'magit-status)
-                ;; topgit
-                (add-hook 'magit-mode-hook 'turn-on-magit-topgit)
-                (defun magit-topgit-prefix (prefix)
-                  (interactive "sTopic Branch Prefix: ")
-                  (setq magit-topgit-branch-prefix prefix))))
