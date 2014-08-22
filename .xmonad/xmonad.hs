@@ -1,5 +1,5 @@
-{-# LANGUAGE RankNTypes #-}
 {-# LANGUAGE KindSignatures #-}
+{-# LANGUAGE RankNTypes     #-}
 
 import qualified Data.Map                               as DM
 import           Data.Ratio                             ((%))
