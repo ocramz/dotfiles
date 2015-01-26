@@ -42,6 +42,7 @@
 /.nixpkgs/
 /.ocp
 /.oh-my-zsh/
+/.password-store/
 /.pip
 /.recentf
 /.rnd
@@ -59,6 +60,10 @@
 /.thumbnails
 /.tilemill/config.json
 /.tor
+/.travis/
+/.unison/.*.tmp
+/.unison/ar*
+/.unison/fp*
 /.zcompdump
 /.zsh-update
 /.zsh_history
