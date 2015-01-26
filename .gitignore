@@ -13,6 +13,14 @@
 /.emacs.d/el-get-*
 /.emacs.d/elpa/
 /.emacs.d/url/
+/.fldigi/*.log*
+/.fldigi/*.txt*
+/.fldigi/*.xml*
+/.fldigi/data/
+/.fldigi/kml/
+/.fldigi/macros/
+/.fldigi/palettes/
+/.fldigi/status_log.txt
 /.floorc
 /.fontconfig
 /.githooks/commit-msg
