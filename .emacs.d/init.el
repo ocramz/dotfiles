@@ -92,7 +92,6 @@
 
 ;; PROGRAMMING
 
-(add-hook 'prog-mode-hook 'paredit-mode)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 (add-hook 'prog-mode-hook 'show-paren-mode)
 (add-hook 'prog-mode-hook 'whitespace-mode)
