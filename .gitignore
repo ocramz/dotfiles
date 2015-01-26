@@ -28,6 +28,7 @@
 /.k.aws
 /.lesshst
 /.local
+/.m2/repository/
 /.netbeans
 /.netrc
 /.nixpkgs/
