@@ -11,3 +11,5 @@ function each {
 }
 
 alias mem='ps -eo pmem,pcpu,rss,vsize,args|sort -k 1 -r|more'
+
+# socat -v TCP-LISTEN:4444,fork TCP:localhost:3000

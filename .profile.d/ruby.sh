@@ -1,8 +1,5 @@
 #-*- mode: sh -*-
 
-export GEM_HOME=$HOME/.gems
+export GEM_HOME=$HOME/.gem
 export GEM_PATH=$GEM_HOME
-
-alias be='bundle exec'
-
-PATH="$GEM_HOME/bin":$PATH
+export PATH=$GEM_HOME/bin:$PATH

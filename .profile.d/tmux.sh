@@ -1,6 +1,6 @@
 #-*- mode: sh -*-
 
-alias t='tmux -2 attach || tmux -2'
+alias t="tmux -2 attach||tmux -2"
 
 function ts {
     tmux -S /tmp/$@
