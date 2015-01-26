@@ -228,8 +228,8 @@
   (local-set-key (kbd "C-c p") 'org-promote-subtree)
   (local-set-key (kbd "C-c d") 'org-demote-subtree))
 
-(global-set-key "\C-cc" 'org-capture)
-(global-set-key "\C-ca" 'org-agenda)
+(global-set-key (kbd "C-x c") 'org-capture)
+(global-set-key (kbd "C-x a") 'org-agenda)
 
 ;; DEFT (QUICK ORG FILES)
 
@@ -238,8 +238,8 @@
       deft-text-mode 'org-mode
       deft-use-filename-as-title t)
 
-(global-set-key (kbd "C-x z") 'deft)
-(global-set-key (kbd "C-x n") 'deft-new-file)
+(global-set-key (kbd "C-x d") 'deft)
+(global-set-key (kbd "C-x D") 'deft-new-file)
 
 ;; HASKELL / GHC-MOD / COMPANY-GHC
 
