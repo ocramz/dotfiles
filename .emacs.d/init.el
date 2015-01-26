@@ -242,6 +242,9 @@
 
 ;; HASKELL / GHC-MOD / COMPANY-GHC
 
+;; NOTE: GHC 7.10 w/ CABAL-1.22 OR GHC 7.8 w/ CABAL-1.20 (ONLY)
+;;       https://github.com/kazu-yamamoto/ghc-mod/issues/417
+
 (autoload 'ghc-init "ghc" nil t)
 (autoload 'ghc-debug "ghc" nil t)
 
