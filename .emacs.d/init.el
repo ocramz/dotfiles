@@ -4,6 +4,16 @@
   (when (fboundp mode) (funcall mode -1)))
 (setq inhibit-startup-screen t)
 
+;; CUSTOM FILE
+
+(setq custom-file (locate-user-emacs-file "custom.el"))
+(load custom-file 'noerror)
+
+;; BACKUP FILES
+
+(setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t))
+      backup-directory-alist `((".*" . ,temporary-file-directory)))
+
 ;; ELPA PACKAGES
 
 (setq package-archives
@@ -15,12 +25,11 @@
         ("melpa-stable"   . "http://stable.melpa.org/packages/")
         ("org"            . "http://orgmode.org/elpa/"))
       package-pinned-packages
-      '((ac-haskell-process  . "melpa")
-        (ac-ispell           . "melpa")
-        (ac-js2              . "melpa")
-        (arduino-mode        . "melpa")
+      '((arduino-mode        . "melpa")
+        (company             . "melpa")
+        (company-cabal       . "melpa")
+        (company-ghc         . "melpa")
         (deft                . "melpa")
-        (ghci-completion     . "melpa")
         (gist                . "melpa")
         (gnuplot             . "melpa")
         (graphviz-dot-mode   . "melpa")
@@ -45,7 +54,8 @@
         (smex                . "melpa")
         (textile-mode        . "melpa")
         (yaml-mode           . "melpa")
-        (yasnippet           . "melpa")))
+        (yasnippet           . "melpa"))
+      el-get-user-packages '(ghc-mod))
 
 (package-initialize t)
 
@@ -72,22 +82,25 @@
             (unless (require pkg nil t)
               (package-install pkg))))
         package-pinned-packages)
-  (el-get 'sync))
+  (el-get 'sync el-get-user-packages))
 
-;; CUSTOM FILE
+;; GENERAL
 
-(setq custom-file (locate-user-emacs-file "custom.el"))
-(load custom-file 'noerror)
+(add-hook 'after-init-hook 'global-company-mode)
+(add-hook 'after-init-hook 'ido-yes-or-no-mode)
+(add-hook 'after-init-hook 'yas-global-mode)
 
-;; BACKUP FILES
+;; PROGRAMMING
 
-(setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t))
-      backup-directory-alist `((".*" . ,temporary-file-directory)))
+(add-hook 'prog-mode-hook 'paredit-mode)
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+(add-hook 'prog-mode-hook 'show-paren-mode)
+(add-hook 'prog-mode-hook 'whitespace-mode)
 
 ;; SMEX
 
-(global-set-key (kbd "M-x") #'smex)
-(global-set-key (kbd "M-X") #'smex-major-mode-commands)
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
 
 ;; WHITESPACE
 
@@ -99,27 +112,14 @@
               whitespace-action '(auto-cleanup)
               whitespace-style '(empty indentation tabs trailing))
 
-;; GENERAL
-
-(add-hook 'after-init-hook #'global-auto-complete-mode)
-(add-hook 'after-init-hook #'ido-yes-or-no-mode)
-(add-hook 'after-init-hook #'yas-global-mode)
-
-;; PROGRAMMING
-
-(add-hook 'prog-mode-hook #'paredit-mode)
-(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
-(add-hook 'prog-mode-hook #'show-paren-mode)
-(add-hook 'prog-mode-hook #'whitespace-mode)
-
 ;; GIT
 
-(global-set-key (kbd "C-x g") #'magit-status)
+(global-set-key (kbd "C-x g") 'magit-status)
 
 ;; ORG-MODE
 
 (setq-default
- org-default-notes-file "~/org/gtd.org"
+ org-default-notes-file "~/org/inbox.org"
  org-directory "~/org"
  org-enable-priority-commands nil
  org-enforce-todo-checkbox-dependencies t
@@ -133,8 +133,8 @@
  org-log-repeat 'time
  org-log-reschedule 'time
  org-log-states-order-reversed nil
- org-mobile-directory "~/org/to-mobile"
- org-mobile-inbox-for-pull "~/org/from-mobile.org"
+ org-mobile-directory "~/org/mobile/"
+ org-mobile-inbox-for-pull "~/org/inbox.org"
  org-mobile-use-encryption t
  org-odd-levels-only t
  org-outline-path-complete-in-steps nil
@@ -224,37 +224,45 @@
         (if (eq org-agenda-dim-blocked-tasks 'invisible) t 'invisible)))
 
 (defun el-get-org-mode-hook ()
-  (auto-revert-mode 1)
-  (local-set-key (kbd "C-c s") #'org-sort)
-  (local-set-key (kbd "C-c p") #'org-promote-subtree)
-  (local-set-key (kbd "C-c d") #'org-demote-subtree))
+  (local-set-key (kbd "C-c s") 'org-sort)
+  (local-set-key (kbd "C-c p") 'org-promote-subtree)
+  (local-set-key (kbd "C-c d") 'org-demote-subtree))
 
-(global-set-key "\C-cc" #'org-capture)
-(global-set-key "\C-ca" #'org-agenda)
+(global-set-key "\C-cc" 'org-capture)
+(global-set-key "\C-ca" 'org-agenda)
 
 ;; DEFT (QUICK ORG FILES)
 
-(setq deft-directory #'org-directory
+(setq deft-directory 'org-directory
       deft-extension "org"
-      deft-text-mode #'org-mode
+      deft-text-mode 'org-mode
       deft-use-filename-as-title t)
-(global-set-key (kbd "C-x z") #'deft)
-(global-set-key (kbd "C-x n") #'deft-new-file)
 
-;; HASKELL
+(global-set-key (kbd "C-x z") 'deft)
+(global-set-key (kbd "C-x n") 'deft-new-file)
 
-(add-hook 'haskell-mode-hook #'turn-on-haskell-doc-mode)
-(add-hook 'haskell-mode-hook #'turn-on-haskell-indentation)
-(add-hook 'haskell-mode-hook #'ac-haskell-process-setup)
-(add-hook 'haskell-mode-hook #'hindent-mode)
+;; HASKELL / GHC-MOD / COMPANY-GHC
 
-(with-eval-after-load 'haskell-mode
-  (define-key haskell-mode-map (kbd "C-c C-b") 'haskell-interactive-switch)
-  (define-key haskell-mode-map (kbd "C-c C-i") 'haskell-process-do-info)
-  (define-key haskell-mode-map (kbd "C-c C-l") 'haskell-process-load-file)
-  (define-key haskell-mode-map (kbd "C-c C-t") 'haskell-process-do-type)
-  (define-key haskell-mode-map (kbd "C-c C-z") 'haskell-interactive-switch)
-  (define-key haskell-mode-map (kbd "C-c v c") 'haskell-cabal-visit-file))
+(autoload 'ghc-init "ghc" nil t)
+(autoload 'ghc-debug "ghc" nil t)
+
+(defun my-haskell-mode-hook ()
+  (local-set-key (kbd "C-c C-b") 'haskell-interactive-switch)
+  (local-set-key (kbd "C-c C-i") 'haskell-process-do-info)
+  (local-set-key (kbd "C-c C-l") 'haskell-process-load-file)
+  (local-set-key (kbd "C-c C-t") 'haskell-process-do-type)
+  (local-set-key (kbd "C-c C-z") 'haskell-interactive-switch)
+  (local-set-key (kbd "C-c v c") 'haskell-cabal-visit-file))
+
+(add-hook 'haskell-mode-hook 'ghc-init)
+(add-hook 'haskell-mode-hook 'hindent-mode)
+(add-hook 'haskell-mode-hook 'my-haskell-mode-hook)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+
+(with-eval-after-load 'company
+  (add-to-list 'company-backends 'company-ghc)
+  (custom-set-variables '(company-ghc-show-info t)))
 
 ;; JAVASCRIPT
 
