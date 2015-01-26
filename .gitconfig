@@ -11,11 +11,12 @@
 	c = checkout
 	d = diff --word-diff
 	f = fetch
-	l = log --oneline --decorate
 	m = merge
 	p = pull
 	s = status -s
 	t = tag -a -m
+	l = log --pretty=oneline
+	csv = log --pretty=format:'%ad,%an,%h,%s%d' --date=short
 	autocommit = sh git commit -a -m $(date -u +%Y%m%d)
 	headless = !sh git symbolic-ref HEAD refs/heads/$1 && rm .git/index && git clean -fdx
 	release = sh TAG=$(date -u +%Y%m%d) && git t $TAG $TAG
@@ -27,16 +28,19 @@
 [core]
 	excludesfile = ~/.gitignore
 	quotepath = false
+	whitespace = trailing-space
 [diff]
 	rename = copy
 [help]
 	autocorrect = 5
 [merge]
 	summary = true
+#	tool = meld
+	tool = opendiff
 [push]
 	default = tracking
 [rerere]
-	enabled = 1
+	enabled = true
 [user]
 	email = tim@dysinger.net
 	name = Tim Dysinger
