@@ -264,6 +264,7 @@
 
 (with-eval-after-load 'company
   (add-to-list 'company-backends 'company-ghc)
+  (add-to-list 'company-backends 'company-cabal)
   (custom-set-variables '(company-ghc-show-info t)))
 
 ;; JAVASCRIPT
