@@ -87,6 +87,7 @@
 ;; GENERAL
 
 (add-hook 'after-init-hook 'global-company-mode)
+(add-hook 'after-init-hook 'ido-mode)
 (add-hook 'after-init-hook 'ido-yes-or-no-mode)
 (add-hook 'after-init-hook 'yas-global-mode)
 
@@ -95,6 +96,12 @@
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 (add-hook 'prog-mode-hook 'show-paren-mode)
 (add-hook 'prog-mode-hook 'whitespace-mode)
+
+;; IDO
+
+(setq ido-enable-flex-matching t
+      ido-everywhere t
+      ido-use-filename-at-point 'guess)
 
 ;; SMEX
 
