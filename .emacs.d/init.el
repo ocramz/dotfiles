@@ -97,6 +97,11 @@
 (add-hook 'prog-mode-hook 'show-paren-mode)
 (add-hook 'prog-mode-hook 'whitespace-mode)
 
+;; PAREDIT
+
+(add-hook 'lisp-mode-hook 'enable-paredit-mode)
+(add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
+
 ;; IDO
 
 (setq ido-enable-flex-matching t
