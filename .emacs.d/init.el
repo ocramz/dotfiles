@@ -286,4 +286,4 @@
 (setq auto-mode-alist (cons '("\\.js$" . js2-mode) auto-mode-alist)
       auto-mode-alist (cons '("\\.json$" . js2-mode) auto-mode-alist)
       auto-mode-alist (cons '("\\.julius$" . js2-mode) auto-mode-alist)
-      js2-basic-offset 4)
+      js2-basic-offset 2)
