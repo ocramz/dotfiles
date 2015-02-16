@@ -245,7 +245,7 @@
 
 ;; DEFT (QUICK ORG FILES)
 
-(setq deft-directory 'org-directory
+(setq deft-directory org-directory
       deft-extension "org"
       deft-text-mode 'org-mode
       deft-use-filename-as-title t)
