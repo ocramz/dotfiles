@@ -287,3 +287,7 @@
       auto-mode-alist (cons '("\\.json$" . js2-mode) auto-mode-alist)
       auto-mode-alist (cons '("\\.julius$" . js2-mode) auto-mode-alist)
       js2-basic-offset 2)
+
+;; CSS
+
+(setq auto-mode-alist (cons '("\\.lucius$" . css-mode) auto-mode-alist))
