@@ -34,6 +34,7 @@
         (gnuplot             . "melpa")
         (graphviz-dot-mode   . "melpa")
         (hamlet-mode         . "melpa")
+        (haskell-emacs       . "melpa")
         (haskell-mode        . "melpa")
         (hindent             . "melpa")
         (ido-ubiquitous      . "melpa")
