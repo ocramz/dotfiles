@@ -1,3 +1,7 @@
 #-*- mode: sh -*-
 
-PATH="$HOME/.cabal/bin":$PATH
+function cabal-sanity {
+    rm -rf ~/.cabal ~/.ghc
+    cabal update
+    echo 'require-sandbox: True' >> ~/.cabal/config
+}

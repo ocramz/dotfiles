@@ -1,2 +1,3 @@
-export GOPATH=$HOME
+#-*- mode: sh -*-
 
+export GOPATH=$HOME
