@@ -53,7 +53,6 @@
         (rainbow-delimiters  . "melpa")
         (rainbow-identifiers . "melpa")
         (smex                . "melpa")
-        (smartparens-mode    . "melpa")
         (textile-mode        . "melpa")
         (yaml-mode           . "melpa")
         (yasnippet           . "melpa"))
@@ -273,7 +272,6 @@
 (add-hook 'haskell-mode-hook 'ghc-init)
 (add-hook 'haskell-mode-hook 'hindent-mode)
 (add-hook 'haskell-mode-hook 'my-haskell-mode-hook)
-(add-hook 'haskell-mode-hook 'smartparens-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 
