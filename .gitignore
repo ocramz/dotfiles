@@ -67,3 +67,5 @@
 /.zcompdump
 /.zsh-update
 /.zsh_history
+/.emacs.d/ido.last
+/.emacs.d/smex-items
