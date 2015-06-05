@@ -259,6 +259,9 @@
 
 ;; HASKELL
 
+(autoload 'ghc-init "ghc" nil t)
+(autoload 'ghc-debug "ghc" nil t)
+
 (defun my-haskell-mode-hook ()
   (local-set-key (kbd "C-c C-b") 'haskell-interactive-bring)
   (local-set-key (kbd "C-c C-c") 'haskell-process-cabal-build)
@@ -271,6 +274,7 @@
   (local-set-key (kbd "C-c v c") 'haskell-cabal-visit-file)
   (local-set-key (kbd "SPC")     'haskell-mode-contextual-space))
 
+(add-hook 'haskell-mode-hook 'ghc-init)
 (add-hook 'haskell-mode-hook 'hindent-mode)
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
