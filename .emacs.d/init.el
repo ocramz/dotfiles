@@ -100,6 +100,8 @@
 (add-hook 'prog-mode-hook 'show-paren-mode)
 (add-hook 'prog-mode-hook 'whitespace-mode)
 
+(setq-default tab-always-indent 'complete)
+
 ;; PAREDIT
 
 (add-hook 'lisp-mode-hook 'enable-paredit-mode)
@@ -255,10 +257,7 @@
 (global-set-key (kbd "C-x d") 'deft)
 (global-set-key (kbd "C-x D") 'deft-new-file)
 
-;; HASKELL / GHC-MOD / COMPANY-GHC
-
-;; NOTE: GHC 7.10 w/ CABAL-1.22 OR GHC 7.8 w/ CABAL-1.20 (ONLY)
-;;       https://github.com/kazu-yamamoto/ghc-mod/issues/417
+;; HASKELL
 
 (defun my-haskell-mode-hook ()
   (local-set-key (kbd "C-c C-b") 'haskell-interactive-bring)
@@ -276,13 +275,23 @@
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
-
 (add-hook 'haskell-mode-hook 'my-haskell-mode-hook)
 
-(with-eval-after-load 'company
-  (add-to-list 'company-backends 'company-ghc)
-  (add-to-list 'company-backends 'company-cabal)
-  (custom-set-variables '(company-ghc-show-info t)))
+(setq haskell-process-suggest-remove-import-lines t
+      haskell-process-auto-import-loaded-modules t
+      haskell-process-log t)
+
+;; RUST
+
+(defun my-rust-mode-hook ()
+  (setq racer-rust-src-path "~/src/github.com/rust-lang/rust/src"
+        racer-cmd "~/src/github.com/phildawes/racer/target/release/racer")
+  (add-to-list 'load-path "~/src/github.com/phildawes/racer/editors/emacs")
+  (require 'racer))
+
+(add-hook 'rust-mode-hook 'flycheck-mode)
+(add-hook 'rust-mode-hook 'flycheck-rust-setup)
+(add-hook 'rust-mode-hook 'my-rust-mode-hook)
 
 ;; JAVASCRIPT
 
@@ -294,3 +303,12 @@
 ;; CSS
 
 (setq auto-mode-alist (cons '("\\.lucius$" . css-mode) auto-mode-alist))
+
+;; COMPANY
+
+(with-eval-after-load 'company
+  ;; haskell
+  (add-to-list 'company-backends 'company-cabal)
+  (add-to-list 'company-backends 'company-ghc)
+  ;; other
+  (custom-set-variables '(company-ghc-show-info t)))
