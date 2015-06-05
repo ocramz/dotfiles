@@ -31,7 +31,6 @@
         (company-ghc         . "melpa")
         (deft                . "melpa")
         (flycheck-rust       . "melpa")
-        (flymake-rust        . "melpa")
         (gist                . "melpa")
         (gnuplot             . "melpa")
         (graphviz-dot-mode   . "melpa")
