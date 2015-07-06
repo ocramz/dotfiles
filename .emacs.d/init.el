@@ -28,7 +28,7 @@
       '((arduino-mode        . "melpa")
         (company             . "melpa")
         (company-cabal       . "melpa")
-        (company-ghc         . "melpa")
+        (company-ghci        . "melpa")
         (deft                . "melpa")
         (flycheck-rust       . "melpa")
         (gist                . "melpa")
@@ -57,23 +57,9 @@
         (smex                . "melpa")
         (textile-mode        . "melpa")
         (yaml-mode           . "melpa")
-        (yasnippet           . "melpa"))
-      el-get-user-packages '(ghc-mod))
+        (yasnippet           . "melpa")))
 
 (package-initialize t)
-
-;; EL-GET PACKAGES
-
-(add-to-list 'load-path (locate-user-emacs-file "el-get/el-get"))
-
-(unless (require 'el-get nil 'noerror)
-  (with-current-buffer
-      (url-retrieve-synchronously
-       "https://raw.githubusercontent.com/dimitri/el-get/master/el-get-install.el")
-    (goto-char (point-max))
-    (eval-print-last-sexp)))
-
-(add-to-list 'el-get-recipe-path (locate-user-emacs-file "el-get-user/recipes"))
 
 ;; BOOTSTRAP
 
@@ -84,12 +70,18 @@
           (let ((pkg (car package)))
             (unless (require pkg nil t)
               (package-install pkg))))
-        package-pinned-packages)
-  (el-get 'sync el-get-user-packages))
+        package-pinned-packages))
+
+;; LISP DIR
+
+(let ((lisp-dir (expand-file-name "lisp/" user-emacs-directory)))
+  (add-to-list 'load-path lisp-dir)
+  (byte-recompile-directory lisp-dir 0))
 
 ;; GENERAL
 
 (add-hook 'after-init-hook 'global-company-mode)
+(add-hook 'after-init-hook 'global-flycheck-mode)
 (add-hook 'after-init-hook 'ido-mode)
 (add-hook 'after-init-hook 'ido-yes-or-no-mode)
 (add-hook 'after-init-hook 'yas-global-mode)
@@ -259,9 +251,6 @@
 
 ;; HASKELL
 
-(autoload 'ghc-init "ghc" nil t)
-(autoload 'ghc-debug "ghc" nil t)
-
 (defun my-haskell-mode-hook ()
   (local-set-key (kbd "C-c C-b") 'haskell-interactive-bring)
   (local-set-key (kbd "C-c C-c") 'haskell-process-cabal-build)
@@ -272,18 +261,21 @@
   (local-set-key (kbd "C-c C-t") 'haskell-process-do-type)
   (local-set-key (kbd "C-c c")   'haskell-process-cabal)
   (local-set-key (kbd "C-c v c") 'haskell-cabal-visit-file)
-  (local-set-key (kbd "SPC")     'haskell-mode-contextual-space))
+  (local-set-key (kbd "SPC")     'haskell-mode-contextual-space)
+  ;; haskell-flycheck
+  (delete 'haskell-ghc flycheck-checkers)
+  (require 'haskell-flycheck))
 
-(add-hook 'haskell-mode-hook 'ghc-init)
 (add-hook 'haskell-mode-hook 'hindent-mode)
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 (add-hook 'haskell-mode-hook 'my-haskell-mode-hook)
 
-(setq haskell-process-suggest-remove-import-lines t
-      haskell-process-auto-import-loaded-modules t
-      haskell-process-log t)
+(setq haskell-process-auto-import-loaded-modules t
+      haskell-process-log t
+      haskell-process-type 'stack-ghci
+      haskell-process-suggest-remove-import-lines t)
 
 ;; RUST
 
@@ -296,6 +288,10 @@
 (add-hook 'rust-mode-hook 'flycheck-mode)
 (add-hook 'rust-mode-hook 'flycheck-rust-setup)
 (add-hook 'rust-mode-hook 'my-rust-mode-hook)
+
+;; HASHICORP
+
+(setq auto-mode-alist (cons '("\\.tf$" . ruby-mode) auto-mode-alist))
 
 ;; JAVASCRIPT
 
@@ -312,7 +308,7 @@
 
 (with-eval-after-load 'company
   ;; haskell
-  (add-to-list 'company-backends 'company-cabal)
-  (add-to-list 'company-backends 'company-ghc)
+  (add-to-list 'company-backends 'company-ghci)
   ;; other
-  (custom-set-variables '(company-ghc-show-info t)))
+  ;; (custom-set-variables '(company-ghc-show-info t))
+  )
