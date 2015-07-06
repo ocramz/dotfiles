@@ -312,3 +312,8 @@
   ;; other
   ;; (custom-set-variables '(company-ghc-show-info t))
   )
+
+;; FLYCHECK
+
+(with-eval-after-load 'flycheck
+  (setq flycheck-check-syntax-automatically '(mode-enabled save)))
